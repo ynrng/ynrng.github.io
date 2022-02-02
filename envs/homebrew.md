@@ -1,7 +1,16 @@
 
 # Migrate HOMEBREW from intel to m1 chip:
 
+
+
 > If you are using migrating assistant and basically copied everything from old macbook to the new m1 chip macbook. You'll probably run into this problem when you try to install sth new using homebrew.
+
+## FAIR WARNING ❗️
+The best solution would be to reinstall the system and not chose migrating from an old macOS. :)
+That would solve half of the problems and the `brew docor` output would be so clean and tidy.
+
+
+...Since you are still reading... Well ...
 
 Run
 ```bash
