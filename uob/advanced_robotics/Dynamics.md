@@ -33,6 +33,12 @@ $$
 
 Small angle approximations:
 $$\sin\theta \approx \theta, \tan\theta \approx \theta, \cos\theta \approx 1-\frac{\theta^2}{2}$$
+$$
+\sin(u)\sin(v) = \frac{1}{2}[\cos(u-v) - \cos(u+v)]
+$$
+$$
+\cos(u)\cos(v) = \frac{1}{2}[\cos(u-v) + \cos(u+v)]
+$$
 
 ![Linear Motion & Rotational Motion](images/ar_motion_compare.png)
 
@@ -65,5 +71,93 @@ $$
 \dot{q} = J^+\dot{x} \rightarrow \dot{x}^T(JJ^T)^{-1}\dot{x}=1
 $$
 The principle axes of 2 ellipsoids have same directions but _inverse_ magnitude.
-### Forward dynamics
+
+
+### Lagrangian
+Define Lagrangian:
+$$
+L = \underbrace{KE}_{\text{kinematic energy}} - \underbrace{PE}_{\text{potential energy}}
+$$
+KE should include _both_ linear and angular.
+
+Lagrange equation:
+$$
+\frac{d}{dt} (\frac{\partial{L}}{\partial{\dot{\theta}}}) -\frac{\partial{L}}{\partial{\theta}} = F_{ext} = \sum\tau
+$$
+
+
+### Forward/Inverse dynamics
 (Equations of motion) When forces do not cancel out and the equations of how robot will accelarate at given time.
+
+
+In general, **Inverse dynamics equation** for rigid body manipulators:
+$$
+\underbrace{M(q)}_{\text{Inertia Matrix}}\ddot{q}+ \underbrace{B(q)}_{\text{Coriolis M惯性}}[\dot{q}\dot{q}]+\underbrace{C(q)}_{\text{Centrifugal M离心}}[\dot{q}^2]+\underbrace{G}_{\text{Gravity Vector}}(q) = \underbrace{\tau}_\text{external forces}
+$$
+where
+$$
+\text{Joint velocities: } [\dot{q}\dot{q}]=[\dot{q_1}\dot{q_2}, \dot{q_1}\dot{q_3}, ..., \dot{q_{n-1}}\dot{q_n} ]^T
+$$
+$$
+[\dot{q}^2] = [\dot{q}_1^2,\dot{q}_2^2,...,\dot{q}_n^2]^T
+$$
+M,B,C,G all configuration **dependent (on $\theta$** not $\dot{\theta},\ddot{\theta}$)
+
+
+Inertia Matrix *M* MUST be **symmetric**, positive definite, invertible:
+$$
+\underbrace{\begin{bmatrix}
+\frac{\partial\tau_1}{\partial\ddot{\theta_1}} & \frac{\partial\tau_1}{\partial\ddot{\theta_2}} & ... & \frac{\partial\tau_1}{\partial\ddot{\theta_n}}
+\\\\
+\frac{\partial\tau_2}{\partial\ddot{\theta_1}} & \frac{\partial\tau_2}{\partial\ddot{\theta_2}} & ... & \frac{\partial\tau_2}{\partial\ddot{\theta_n}}
+\\...\\
+\frac{\partial\tau_n}{\partial\ddot{\theta_1}} & \frac{\partial\tau_n}{\partial\ddot{\theta_2}} & ... & \frac{\partial\tau_n}{\partial\ddot{\theta_n}}
+\end{bmatrix}}_{M}
+\underbrace{\begin{bmatrix}
+\ddot{\theta_1} \\\\ \ddot{\theta_2} \\...\\ \ddot{\theta_n}
+\end{bmatrix}}_{\ddot{q}}
+$$
+
+Centrifugal Matrix:
+$$
+\underbrace{\begin{bmatrix}
+\frac{\partial\tau_1}{\partial\dot{\theta_1}^2} & \frac{\partial\tau_1}{\partial\dot{\theta_2}^2} & ... & \frac{\partial\tau_1}{\partial\dot{\theta_n}^2}
+\\\\
+\frac{\partial\tau_2}{\partial\dot{\theta_1}^2} & \frac{\partial\tau_2}{\partial\dot{\theta_2}^2} & ... & \frac{\partial\tau_2}{\partial\dot{\theta_n}^2}
+\\...\\
+\frac{\partial\tau_n}{\partial\dot{\theta_1}^2} & \frac{\partial\tau_n}{\partial\dot{\theta_2}^2} & ... & \frac{\partial\tau_n}{\partial\dot{\theta_n}^2}
+\end{bmatrix}}_{C}
+\underbrace{\begin{bmatrix}
+\dot{\theta_1}^2 \\\\ \dot{\theta_2}^2 \\...\\ \dot{\theta_n}^2
+\end{bmatrix}}_{[\dot{q}^2]}
+$$
+
+Coriolis Matrix:
+$$
+\underbrace{\begin{bmatrix}
+\frac{\partial\tau_1}{\partial\dot{\theta_1}\dot{\theta_2}}
+\\...\\
+\frac{\partial\tau_n}{\partial\dot{\theta_1}\dot{\theta_2}}
+\end{bmatrix}}_{B}
+\underbrace{\begin{bmatrix}
+\dot{\theta_1}\dot{\theta_2}
+\end{bmatrix}}_{[\dot{q}\dot{q}]}
+$$
+
+Gravity Vector:
+$$
+\underbrace{\begin{bmatrix}
+\tau_1 - M_1-C_1-B_1
+\\...\\
+\tau_n - M_n-C_n-B_n
+\end{bmatrix}}_{G}
+$$
+
+Because M is invertible, **Forward dynamics equation** can be:
+
+$$
+\ddot{q} = M(q)^{-1}(-C(q,\dot{q})-G(q)+\tau)
+$$
+
+Forward Dynamics useful for simulation & prediction.
+Inverse Dynamics useful for control.
