@@ -42,7 +42,7 @@ r_{31} & r_{32} & r_{33} \\
 r_{1} & r_{2} & r_{3} \\
 \end{bmatrix}
 $$
-*constraints (6)*
+Because the redundency in rotation matrix, so there *MUST* exist *constraints (6)*
 $
 |r_1|=|r_2|=|r_3|=1
 $
@@ -54,6 +54,29 @@ $
 3 angular representations:
 * Euler Angles (eg: `Z-Y-X`)
 
+
+> **Q**:  What's the properties of rotation matrix?
+>
+> **A**:
+> - A rotation matrix will always be a square matrix.
+> - As a rotation matrix is always an orthogonal matrix
+> - the transpose will be equal to the inverse of the matrix.
+> - The determinant of a rotation matrix will always be equal to 1.
+> - Multiplication of rotation matrices will result in a rotation matrix.
+> - Furthermore, for clockwise rotation, a negative angle is used.
+
+
+> **Q**: how to determine a matrix is a rotation matrix.
+given
+$
+R^A_B =
+\begin{bmatrix}
+\cos \theta & 0& \sin \theta \\
+\sin \phi \sin\theta & \cos\phi & -\sin\phi\cos\theta\\
+-\cos\phi\sin\theta & \sin\phi & \cos\phi\cos\theta \\
+\end{bmatrix}
+$
+**A**: calculate the $det(R^A_B)=1$ and prove $R^{-1} = R^T  \Leftrightarrow RR^T=I$
 
 
 **Degree of Freedon ( DOF )**
@@ -107,17 +130,6 @@ Rotate base on **current frame** => Post multiplication ( Right )
 
 Rotate base on **fixed frame** => Pre multiplication ( Left )
 
-> **Q**: how to determine a matrix is a rotation matrix.
-given
-$
-R^A_B =
-\begin{bmatrix}
-\cos \theta & 0& \sin \theta \\
-\sin \phi \sin\theta & \cos\phi & -\sin\phi\cos\theta\\
--\cos\phi\sin\theta & \sin\phi & \cos\phi\cos\theta \\
-\end{bmatrix}
-$
-**A**: calculate the $det(R^A_B)=1$ and prove $R^{-1} = R^T  \Leftrightarrow RR^T=I$
 
 
 ### Inverse
@@ -131,7 +143,7 @@ $
 * x- parallel to common normal of sequential z- ( $z^{i-1}, z^i$)
 * y- right hand coordinates
 * di: distance between Oi-1 and Oi’ along zi-1 <!-- (For prismatic joints) -->
-* θi: angle between xi-1 and xi about zi-1 (For revolute joints, θi defines the motioni defines the motion)
+* θi: angle between xi-1 and xi about zi-1 (For revolute joints, θi defines the motion)
 * **ai**: distance between Oi and Oi’
 * αi: angle between zi-1 and zi
 
@@ -260,6 +272,8 @@ $
 $
 \omega_i=\omega_{i-1}+\pink{\omega_{i-1,i}} \blue{\leftarrow \text{relative rotation between 2 frames}}
 $
+
+
 
 
 
