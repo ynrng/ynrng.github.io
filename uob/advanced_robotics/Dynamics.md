@@ -1,7 +1,7 @@
 
 <link type="text/css" rel="stylesheet" href="../md.css">
 
-# Dynamics
+# [Home](../../index.md) > [Advanced Robotics](README.md) > Dynamics
 
 
 ### Inertia and moments

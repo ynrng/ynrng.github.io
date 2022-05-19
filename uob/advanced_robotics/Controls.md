@@ -1,6 +1,6 @@
 <link type="text/css" rel="stylesheet" href="../md.css">
 
-# Controls
+# [Home](../../index.md) > [Advanced Robotics](README.md) > Controls
 > generate $\tau$ to get $\ddot{q}$
 ### Feedforward control ( open loop )
 Inverse Dynamics

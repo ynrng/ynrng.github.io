@@ -1,7 +1,7 @@
 
 <link type="text/css" rel="stylesheet" href="../md.css">
 
-# Advanced Robotics
+# [Home](../../index.md) > [Advanced Robotics](README.md)
 
 - [FK/IK](FK.IK.md)
 - [Dynamics](Dynamics.md)
@@ -13,12 +13,15 @@
 
 > **Q**:  What's the properties of rotation matrix?
 
- **A**:
- - A rotation matrix will always be a square and orthogonal matrix
- - the transpose will be equal to the inverse of the matrix.
- - The determinant of a rotation matrix will always be equal to 1.
- - Multiplication of rotation matrices will result in a rotation matrix.
- - Furthermore, for clockwise rotation, a negative angle is used.
+**A**:
+- A rotation matrix will always be a square and orthogonal matrix.
+  - Column vectors are mutually orthogonal (orthonormal frame)
+  - Column vectors have unit norm
+- the transpose will be equal to the inverse of the matrix $R^T=R^{-1}$.
+- The determinant of a rotation matrix will always be equal to 1. $det(R)=1$.
+- Right-handed coordinate system
+  - for clockwise rotation, a negative angle is used.
+- Multiplication of rotation matrices will result in a rotation matrix.
 
 
 > **Q**: how to determine a matrix is a rotation matrix.

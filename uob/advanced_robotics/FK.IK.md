@@ -1,7 +1,7 @@
 
 <link type="text/css" rel="stylesheet" href="../md.css">
 
-# FK/IK
+# [Home](../../index.md) > [Advanced Robotics](README.md) > FK/IK
 
 
 ## Basics
@@ -51,9 +51,13 @@ $
 r_1\cdot r_2 = r_2\cdot r_3 = r_3\cdot r_1 = 0
 $
 
-3 angular representations:
-* Euler Angles (eg: `Z-Y-X`)
+### angular representations:
+* Euler Angles (`Z-Y-Z`) - _current_ frame - post multiplication
+* Euler ZYX Angles (Roll-Pitch-Yaw`Z-Y-X`) - _Fixed_ frame - left multiplication
+* Quaternions ( to avoid singularity )
 
+### From Rotation Matrix to Euler Angles
+Use `arc2`
 
 > **Q**:  What's the properties of rotation matrix?
 >
@@ -76,7 +80,8 @@ R^A_B =
 -\cos\phi\sin\theta & \sin\phi & \cos\phi\cos\theta \\
 \end{bmatrix}
 $
-**A**: calculate the $det(R^A_B)=1$ and prove $R^{-1} = R^T  \Leftrightarrow RR^T=I$
+>
+> **A**: calculate the $det(R^A_B)=1$ and prove $R^{-1} = R^T  \Leftrightarrow RR^T=I$
 
 
 **Degree of Freedon ( DOF )**
@@ -90,6 +95,7 @@ $~^A_B T$ transform matrix from coordinates `B` to `A`
 $
 ~^A P = ~^A_B T ~^B P = ~^A_B T ~^B_C T ~^C P = ~^A_C T ~^C P
 $
+
 $
 \Rightarrow \red{~^A_C T = ~^A_B T ~^B_C T} =
 \begin{bmatrix}
@@ -139,7 +145,7 @@ $
 
 
 ### DH parameters (Denavit-Hartenberg)
-> P62
+> P62 [link](https://www.youtube.com/watch?v=rA9tm0gTln8)
 * z- prismatic translate along z; revolute rotate along z;
 * Locate the origin Oi at the intersection of axis zi with the common normal
 to axes zi−1 and zi. Also, locate Oi′ at the intersection of the common
@@ -172,7 +178,7 @@ Given the four D-H parameters for joint i: $a_i, d_i, \theta_i, \alpha_i$, we ca
 compute the homogeneous transformation matrix from joint i-1 to joint i.
 
 1. choose a frame aligned with Frame i-1.
-2. Translate frame along $z_{i-1}$ by ${d_i} and rotate by $\theta_i$:
+2. Translate frame along $z_{i-1}$ by ${d_i}$ and rotate by $\theta_i$:
 $$
 A^{i-1}_{i'} =
 \begin{bmatrix}
@@ -182,17 +188,19 @@ s\theta_i & c\theta_i & 0 & 0 \\
 0 & 0 & 0 & 1\\
 \end{bmatrix}
 $$
-3. Translate frame along $x_i'$ by $a_i$ and rotate by $\alpha_i$:
+3. Translate frame along $x_{i'}$ by $a_i$ and rotate by $\alpha_i$:
 $$
 A^{i'}_i =
 \begin{bmatrix}
-1 & 0 & 1 & a_i \\
+1 & 0 & 0 & a_i \\
 0 & c\alpha_i & -s\alpha_i & 0 \\
 0 & s\alpha_i & c\alpha_i & 0 \\
 0 & 0 & 0 & 1\\
 \end{bmatrix}
 $$
+
 Resulting (Eq.2.52):
+
 $
 A^{i-1}_i(q_i)=A^{i-1}_{i'}A^{i'}_{i}=
 \begin{bmatrix}
@@ -247,6 +255,19 @@ where $q_i=\theta_i$ for revolute joint, $q_i=d_i$ for  prismatic joint
 >1. define dh parameter
 >1. computer post multiplication
 
+###  Direct Kinematic Equation
+$$
+x_e=k(q)
+$$
+
+- k is a vector function that maps _joint space_($q=[q_1,q_2,q_n]^T$) to _operational space_([$P_x,P_y,P_z,R_x,R_y,R_z]^T$)
+- k is the direct kinematics function
+
+Note in general:
+- k is a non-linear vector function
+- k is surjective: every q vector gets mapped to one and only one xe vector.
+- But not the other way around: k-1 is ill-posed: the number of solutions for k-1 may be zero, finite, or infinite
+
 
 ### Jaccobian -- w3
 $
@@ -296,12 +317,36 @@ $
 p^b=o^b_e+R_e^bp^e
 $
 taking derivative on both side $\frac{d}{dt}p^b\Rightarrow$
-$
+
+$$
 \dot{p}^b=\overbrace{\dot{o}^b_e}^{\text{change in displacement between frames}}+\underbrace{\pink{\dot{R}^b_ep^e}}_{\text{velocity of rotation}}+\overbrace{R^b_e\dot{p}^e}^{\text{velocity w.r.t. end-eff frame }} \blue{\leftarrow\text{product rule}}
-\\
-\text{where }  \dot{R}^b_ep^e = \omega \times p^e_b = \omega \times R^b_ep^e
-$
+$$
+where  $\dot{R}^b_ep^e = \omega \times p^e_b = \omega \times R^b_ep^e$
+
 
 $
 \omega_i=\omega_{i-1}+\pink{\omega_{i-1,i}} \blue{\leftarrow \text{relative rotation between 2 frames}}
 $
+
+### Singularities / Redundancy
+When J drops ranks, not inversible.
+Calculate $det(J) =0$
+
+Rank: number of linearly independent
+columns = number of linearly independent rows = _number of DOFs_ in the Range space
+
+#DOFs in operational space + #DOFs in null space = #DOFs of the robot (n)
+
+Ways to deal with singularities:
+1. try to stay away from them
+2. change task priorities
+3. use damped least squares
+4. Jacobian Transpose (numerically very simple! but need to assume: $\dot x_ d = 0$ )
+
+### Inverse Kinematics
+$$
+\dot q = J^+ \dot x + \underbrace{( I  - J ^+ J ) }_{\text{null space projection matrix}}\dot q_0
+$$
+where  $J^+ = J^T (JJ^T )^{-1}$ is Moore-Penrose pseudoinverse.
+
+$\dot q_0$ can be used to achieve secondary objectives.

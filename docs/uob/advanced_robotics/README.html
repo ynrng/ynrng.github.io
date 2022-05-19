@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Advanced Robotics</title>
+        <title>&lbrack;Home&rbrack;&lpar;&period;&period;&sol;&period;&period;&sol;index&period;md&rpar; &gt; &lbrack;Advanced Robotics&rbrack;&lpar;README&period;md&rpar;</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@
     </head>
     <body class="vscode-body vscode-light">
         <link type="text/css" rel="stylesheet" href="../md.css">
-<h1 id="advanced-robotics">Advanced Robotics</h1>
+<h1 id="home--advanced-robotics"><a href="../../index.html">Home</a> &gt; <a href="README.html">Advanced Robotics</a></h1>
 <ul>
 <li><a href="FK.IK.html">FK/IK</a></li>
 <li><a href="Dynamics.html">Dynamics</a></li>
@@ -60,11 +60,20 @@
 </blockquote>
 <p><strong>A</strong>:</p>
 <ul>
-<li>A rotation matrix will always be a square and orthogonal matrix</li>
-<li>the transpose will be equal to the inverse of the matrix.</li>
-<li>The determinant of a rotation matrix will always be equal to 1.</li>
+<li>A rotation matrix will always be a square and orthogonal matrix.
+<ul>
+<li>Column vectors are mutually orthogonal (orthonormal frame)</li>
+<li>Column vectors have unit norm</li>
+</ul>
+</li>
+<li>the transpose will be equal to the inverse of the matrix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>T</mi></msup><mo>=</mo><msup><mi>R</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">R^T=R^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>The determinant of a rotation matrix will always be equal to 1. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>e</mi><mi>t</mi><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">det(R)=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</li>
+<li>Right-handed coordinate system
+<ul>
+<li>for clockwise rotation, a negative angle is used.</li>
+</ul>
+</li>
 <li>Multiplication of rotation matrices will result in a rotation matrix.</li>
-<li>Furthermore, for clockwise rotation, a negative angle is used.</li>
 </ul>
 <blockquote>
 <p><strong>Q</strong>: how to determine a matrix is a rotation matrix.
