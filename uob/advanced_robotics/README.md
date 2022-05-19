@@ -5,9 +5,8 @@
 
 - [FK/IK](FK.IK.md)
 - [Dynamics](Dynamics.md)
-- Controls
+- [Controls](Controls.md)
 - Motion Planning
-<!-- - [Controls](Controls.md) -->
 <!-- - [Motion Planning](MP.md) -->
 
 ### Rotation
