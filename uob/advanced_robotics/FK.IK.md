@@ -305,12 +305,3 @@ $
 $
 \omega_i=\omega_{i-1}+\pink{\omega_{i-1,i}} \blue{\leftarrow \text{relative rotation between 2 frames}}
 $
-
-
-
-
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
-</script>

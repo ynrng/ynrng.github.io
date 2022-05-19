@@ -233,7 +233,7 @@ source ./install/setup.sh
 ./install/rviz2/bin/rviz2 # testing rviz2 for example
 ```
 ## Results with joy
-![](images/Screenshot%202022-02-01%20at%2023.43.28.png)
+![](images/env_ros.png)
 
 Okey, that's another week of my life gone :)
 
