@@ -58,11 +58,6 @@ derivatives of the Euler angles.
 - For ZYZ:
 - For XYZ:
 
-### Dynamics
-> **Q**: Centre of Mass?
-
-**A**:
-
 
 ### Motion planning
 > **Q**: Comparisions between different methods?

@@ -139,13 +139,20 @@ $
 
 
 ### DH parameters (Denavit-Hartenberg)
+> P62
 * z- prismatic translate along z; revolute rotate along z;
-* x- parallel to common normal of sequential z- ( $z^{i-1}, z^i$)
+* Locate the origin Oi at the intersection of axis zi with the common normal
+to axes zi−1 and zi. Also, locate Oi′ at the intersection of the common
+normal with axis zi−1
+* x- parallel to common normal of ( $z^{i-1}, z^i$), with direction
+from Joint i to Joint i + 1
 * y- right hand coordinates
 * di: distance between Oi-1 and Oi’ along zi-1 <!-- (For prismatic joints) -->
-* θi: angle between xi-1 and xi about zi-1 (For revolute joints, θi defines the motion)
+* θi: angle between xi-1 and xi about **zi-1** (For revolute joints, θi defines the motion)
 * **ai**: distance between Oi and Oi’
-* αi: angle between zi-1 and zi
+* $\alpha_i$: angle between zi-1 and zi about **xi**, positive for counter-clockwise.
+
+![](images/ar_dh.png)
 
 (to make operation easier, try to define base frame overlap with 1st frame, & overlap intermediate frame)
 
@@ -154,13 +161,38 @@ $
 1. $x^i$ is defined alone common normal, with direction of right hand from $z^{i-1}, z^i$
 1. y force right hand corrdinates
 1. $\alpha^i$ is right hand from $z^{i-1}, z^i$
+1. For Frame 0, only the direction of axis z0 is specified; then O0 and x0 can be arbitrarily chosen.
+1. For Frame n, since there is no Joint n + 1, zn is not uniquely defined while xn has to be normal to axis zn−1. Typically, Joint n is revolute, and thus zn is to be aligned with the direction of zn−1.
 
 
 
 ### Homogeneous Transformation Matrix
-Given the four D-H parameters for joint i: $a_i, d_i, \theta_i, \alpha_i$, we can
-compute the homogeneous transformation matrix from joint i-1 to joint i:
 
+Given the four D-H parameters for joint i: $a_i, d_i, \theta_i, \alpha_i$, we can
+compute the homogeneous transformation matrix from joint i-1 to joint i.
+
+1. choose a frame aligned with Frame i-1.
+2. Translate frame along $z_{i-1}$ by ${d_i} and rotate by $\theta_i$:
+$$
+A^{i-1}_{i'} =
+\begin{bmatrix}
+c\theta_i & -s\theta_i & 0 & 0 \\
+s\theta_i & c\theta_i & 0 & 0 \\
+0 & 0 & 1 & d_i \\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+$$
+3. Translate frame along $x_i'$ by $a_i$ and rotate by $\alpha_i$:
+$$
+A^{i'}_i =
+\begin{bmatrix}
+1 & 0 & 1 & a_i \\
+0 & c\alpha_i & -s\alpha_i & 0 \\
+0 & s\alpha_i & c\alpha_i & 0 \\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+$$
+Resulting (Eq.2.52):
 $
 A^{i-1}_i(q_i)=A^{i-1}_{i'}A^{i'}_{i}=
 \begin{bmatrix}
@@ -205,6 +237,7 @@ $
 $
 q=\begin{bmatrix}q_1 & ... & q_n\end{bmatrix}^T
 $
+
 where $q_i=\theta_i$ for revolute joint, $q_i=d_i$ for  prismatic joint
 
 
