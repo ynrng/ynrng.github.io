@@ -31,20 +31,12 @@ F = -kx
 F = -cv
 $$
 
-Small angle approximations:
-$$\sin\theta \approx \theta, \tan\theta \approx \theta, \cos\theta \approx 1-\frac{\theta^2}{2}$$
-$$
-\sin(u)\sin(v) = \frac{1}{2}[\cos(u-v) - \cos(u+v)]
-$$
-$$
-\cos(u)\cos(v) = \frac{1}{2}[\cos(u-v) + \cos(u+v)]
-$$
 
 ![Linear Motion & Rotational Motion](images/ar_motion_compare.png)
 
 ![Common Moments of Inertia](images/ar_common_moments_inertia.png)
 
-> **Q**: For arbitrary angular accelaration vector, its linear combination of rotations along axis: ![](images/ar_solid_cylinder.png =50%x)
+> <span id="Q1">**Q**</span>: For arbitrary angular accelaration vector, its linear combination of rotations along axis: ![](images/ar_solid_cylinder.png =50%x)
 >
 > **A**:
 > $$
@@ -86,7 +78,7 @@ $$
 $$
 
 
-### Forward/Inverse dynamics
+### Inverse dynamics
 (Equations of motion) When forces do not cancel out and the equations of how robot will accelarate at given time.
 
 
@@ -153,6 +145,7 @@ $$
 \end{bmatrix}}_{G}
 $$
 
+### Forward dynamics
 Because M is invertible, **Forward dynamics equation** can be:
 
 $$
