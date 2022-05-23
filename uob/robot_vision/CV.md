@@ -38,11 +38,11 @@ Captured photons release energy which is used as electrical signals for us to se
 
 Wave frequency $f$ (`Hz`) and energy $E$ (`J`) can be calculated as follows ($h=6.623\times 10^{34}$ - Plank's constant, $c=2.998\times 10^8$ - speed of light):
 
-$$f=\frac{c}{\lambda}$$
+$$ \text{frequency}(Hz) \rightarrow f=\frac{c \leftarrow \text{speed of light} (2.998*10^8 ms^{-1}) }{\lambda \leftarrow \text{wavelength}(m)}$$
 
 $$E=hf$$
 
-> Perceivable electromagnetic radiation wavelengths are within `380` to `760` nm
+> Human erceivable electromagnetic radiation wavelengths are within `380` to `760` nm
 
 **Law of Geometric Optics**:
 1. Light travels in straight lines
@@ -55,7 +55,9 @@ $$E=hf$$
 <center><img alt="Geometric Optics" src="https://glossary.oilfield.slb.com/-/media/publicmedia/ogl98151.ashx?sc_lang=en"></center>
 
 
-**Focal length** $f$ (`m`) - distance from lens to the point $F$ where the system converges the light. The power of lens (how much the lens reduces the real world to the image in plane) is just $\frac{1}{f}$ (`D`) (~`59D` for human eye)
+**Focal length** $f$ (`m`) - distance from lens to the point $F$ where the system converges the light. The power of lens (how much the lens reduces the real world to the image in plane) is just $\frac{1}{f}$ (`D`) (~`59D` for human eye).
+For concave lens:
+$$\frac{1}{f}=\frac{1}{u}+\frac{1}{v}$$
 
 ![Lens Formula and Magnification](https://s3.amazonaws.com/bucketeer-6a6b5dd7-82e9-48dd-b3be-ec23fe6cc180/notes/images/000/000/060/original/lens-formula.jpg?1583773717)
 

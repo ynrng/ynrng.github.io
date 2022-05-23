@@ -350,3 +350,4 @@ $$
 where  $J^+ = J^T (JJ^T )^{-1}$ is Moore-Penrose pseudoinverse.
 
 $\dot q_0$ can be used to achieve secondary objectives.
+
