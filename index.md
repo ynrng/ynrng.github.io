@@ -1,8 +1,10 @@
 
 
 
-# NOTES
+# NOTES [![GitHub issues](https://badgen.net/github/issues/sugaE/sugaE.github.io/)](https://GitHub.com/sugaE/sugaE.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/sugaE/sugaE.github.io)](https://GitHub.com/sugaE/sugaE.github.io/pull/)
+
 >  Contact me [here](mailto:suga_e@outlook.com)
+
 
 ## Environments (for M1)
 - [Homebrew](envs/homebrew.md)

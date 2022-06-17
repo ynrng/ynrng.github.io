@@ -3,7 +3,7 @@
 
 # [Home](../../index.md) > [Robot Vision](README.md) > RV
 
-## Pinhole Camera
+## Pinhole Camera - W7.1
 
 ### Acquiring Image
 
@@ -25,7 +25,9 @@ $$\begin{bmatrix}x' & y' & z'\end{bmatrix}^{\top}\to\begin{bmatrix}f'(x/z) & f'(
 
 Such **weak-perspective projection** is used when scene depth is small because _magnification_ $m$ is assumed to be constant, e.g.,  $x'=-m x$, $y'=-m y$. **Parallel projection** where points are parallel along $z$ can fix this but are unrealistic.
 
-> **Pinhole cameras** are dark to allow only a small amount of rays hit the screen (to make the image sharp). _Lenses_ are used instead to capture more light.
+> **Pinhole cameras** are dark to allow only a small amount of rays hit the screen (to make the image sharp). Proper size Pinhole results in _dark but sharp_ image.
+>
+>  **Lenses** are used instead to 1. gather light 2.keep the picture in sharp focus.
 
 
 ## Camera Geometry
