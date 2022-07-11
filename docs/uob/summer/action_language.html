@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>AL of the RA domain&colon;</title>
+        <title>FetchBot</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -63,7 +63,8 @@
 }
 
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -79,188 +80,217 @@
         
     </head>
     <body class="vscode-body vscode-light">
-        <h2 id="al-of-the-ra-domain">AL of the RA domain:</h2>
+        <style>
+   code {
+      color: peru;
+   }
+</style>
+<h1 id="fetchbot">FetchBot</h1>
+<h2 id="al-of-the-robot-assistent">AL of the Robot Assistent:</h2>
 <!-- l if p0,...,pm; State Constraints
 a causes l_in if p0,...,pm; Causal Laws
 impossible a0,...,ak if p0,...,pm; Executability Conditions
 
 where a is an action, l is a literal, l_in is an inertial literal, and p0,..., pm are domain literals -->
 <hr>
-<p>The robot will be working in the domain of “home assistant” and it will be asked to do fetching related tasks. Robot should generate steps to achieve the goal.</p>
+<p>The Rob will be working in the domain of “home assistant” and it will be asked to do fetching related tasks. Rob should generate steps to achieve the goal.</p>
+<!-- W4
+--- -->
+<!-- I have some questions as I wrote this, can you answer them so I can continue working on this. And please point out other things that I should include if I had missed: -->
+<!-- 1. Because the Loc of all Objs are not known. So in the begining, the Rob need to make observations. Which one is better?
+   - Should I make the Rob circle around the whole map and make all the initial observations at once (this will make all inital positions of Objs known),
+   - OR should I make Rob go to one place and make partial observations and plans (go to table and define status of all Objs on the table, clean the table, then go to 2nd place, clean it, ...) and then combine results in the end ?
+2. Are these 2 features  suffient enough as suggesting alternative?
+   - If given instructions like 'put away all Objs into drawer', but drawer is full (meaning #count(in(Obj, drawer)) = maximum), then it will suggest to put remaining Objs into other container space. Like the Goal(clean) states below.
+   -  If given instuctions like 'fetch apple from box', and apple's not in the box, the Rob will still find apple from other place and bring it. (More specific steps depend on question 1)
+3. Underlined in "Causal Laws" section.
+4. Should I include history related occurs() and holds in this? -->
+<p><code>Sorts</code> definition in <a href="https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2021/yxw257/-/blob/main/asp/fetchbot.sp">fetchbot.sp</a></p>
 <hr>
-<p>I have some questions as I wrote this, can you answer them so I can continue working on this. And please point out other things that I should include if I had missed:</p>
-<ol>
-<li>Because the location of all objects are not known. So in the begining, the robot need to make observations. Which one is better?
+<p>Given:</p>
 <ul>
-<li>Should I make the robot circle around the whole map and make all the initial observations at once (this will make all inital positions of objects known),</li>
-<li>OR should I make robot go to one place and make partial observations and plans (go to table and define status of all objects on the table, clean the table, then go to 2nd place, clean it, ...) and then combine results in the end ?</li>
+<li>coordinates of 3 locaions.</li>
 </ul>
-</li>
-<li>Are these 2 features  suffient enough as suggesting alternative?
+<p>Unknown, can be observed (obs):</p>
 <ul>
-<li>If given instructions like 'put away all objects into drawer', but drawer is full (meaning #count(in(object, drawer)) = maximum), then it will suggest to put remaining objects into other container space. Like the Goal(clean) states below.</li>
-<li>If given instuctions like 'fetch apple from box', and apple's not in the box, the robot will still find apple from other place and bring it. (More specific steps depend on question 1)</li>
+<li>total Objects. Observations.</li>
+<li>position of Objects. Observations.</li>
+<li>whether Location is locked. <code>locked</code> will be a deduction of failed action of open/inconsistent action and observation.</li>
 </ul>
-</li>
-<li>Underlined in &quot;Causal Laws&quot; section.</li>
-<li>Should I include history related occurs() and holds in this?</li>
-</ol>
-<hr>
-<p>Given: coordinates of 3 locaions.</p>
-<p>Unknown: total objects. position of objects.</p>
+<p>Initial setup (examples):</p>
+<pre><code class="language-ASP"><code><div>in(book1, table).
+in(book2, sofa).
+in(book3, drawer).
+in(apple, table).
+in(orange, box).
+at(rob1, table).
+</div></code></code></pre>
 <!-- TODO count can be replaced by volume if time permits -->
-<p>Goal:</p>
+<p>Goal (examples):</p>
 <ul>
-<li>clean = minimise #count(in(object, space_open)), #count(in(object, container_open)).</li>
-<li>fetch = in(apple, sofa)</li>
+<li>clean = #minimise {in(Obj, space_open): in(Obj, container_open)}.</li>
 </ul>
-<!-- - set_table = #count(in(object, table)) = 3 -->
-<p>instance.lp are defined at bottom:</p>
+<pre><code class="language-ASP"><code><div>empty(table).
+empty(sofa).
+
+% solution generated
+% {occurs(navigate(rob1,drawer),0), occurs(open(rob1,drawer),1), occurs(navigate(rob1,table),2), occurs(pick(rob1,book1),3), occurs(navigate(rob1,drawer),4), occurs(place(rob1,book1),5), occurs(navigate(rob1,table),6), occurs(pick(rob1,apple),7), occurs(navigate(rob1,drawer),8), occurs(place(rob1,apple),9)}
+</div></code></code></pre>
+<ul>
+<li>fetch:</li>
+</ul>
+<pre><code class="language-ASP"><code><div>in(apple, sofa).
+</div></code></code></pre>
+<!-- - set_table = #count(in(Obj, table)) = 3 -->
+<!-- instance.lp are defined at bottom: -->
 <hr>
 <p><strong>State Constraints</strong></p>
 <!-- - xx IF xx -->
+<!-- opened(#location) +
+in(#object, #location) +
+in_hand(#robot, #object). -->
 <ul>
-<li>opened(loc_open)</li>
-<li>emptied(location) IF #count(in(object, location)) == 0</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(R, L2)</code> IF <code>at(R, L1)</code>, <code>L1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>L2</code></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>count_in(L, N1)</code> IF <code>count_in(L, N2)</code>, <code>N1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>N2</code></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in(O, L2)</code> IF <code>in(O, L1)</code>, <code>L1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>L2</code></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in_hand(R, O1)</code> IF <code>in_hand(R, O2)</code>, <code>O1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>O2</code></li>
+<li><code>opened(Loc_open)</code></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Loc)</code> IF  <code>locked(Loc)</code></li>
 </ul>
-<!-- maximum objects to fill the specific container, should use weighted val to represent volume if time permits  -->
+<!-- -  -->
 <ul>
-<li>#count(in(object, drawer)) &lt;= 5</li>
-<li>#count(in(object, box)) &lt;= 3</li>
-<li>#count(in(object, table)) &lt;= 20</li>
-<li>#count(in(object, sofa)) &lt;= 10</li>
+<li><code>empty(Loc)</code> IF <code>count_in(Loc, 0)</code></li>
+</ul>
+<!-- - $\neg$ `empty(Loc)` IF` count_in(Loc, N)`, `N > 0` -->
+<!-- -  -->
+<!-- maximum Objs to fill the specific container, should use weighted val to represent volume if time permits  -->
+<ul>
+<li><code>full(Loc)</code> IF <code>count_in(Loc, 10)</code>, <code>L = drawer</code></li>
+</ul>
+<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = drawer`, `N < 10` -->
+<ul>
+<li><code>full(Loc)</code> IF <code>count_in(Loc, 3)</code>, <code>L = box</code></li>
+</ul>
+<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = drawer`, `N < 3` -->
+<ul>
+<li><code>full(Loc)</code> IF <code>count_in(Loc, 10)</code>, <code>L = table</code></li>
+</ul>
+<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = table`, `N < 10` -->
+<ul>
+<li><code>full(Loc)</code> IF <code>count_in(Loc, 5)</code>, <code>L = sofa</code></li>
+</ul>
+<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = sofa`, `N < 5` -->
+<!-- - $\neg$ `empty(Loc)` IF not `empty(Loc)` -->
+<!-- -  -->
+<!-- - $\neg$ `opened(Loc)` IF not `opened(Loc)` -->
+<!-- -  -->
+<!-- - $\neg$ locked(Loc_close) IF not locked(Loc_close) -->
+<!-- -  -->
+<ul>
+<li><code>can_pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <code>opened(Loc)</code>, <code>in(Obj, Loc)</code> <code>L1!</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>L2</code></li>
 </ul>
 <!-- history -->
-<ul>
-<li>step=step+1 IF not goal()</li>
-<li>holds(fluent, T) IF not occurs(action, T), holds(fluent, T-1), actions causes fluent change</li>
-<li>in(object, location) | not in(object, location) IF {new observation comes at location} %%</li>
-</ul>
+<!-- - step=step+1 IF not goal()
+- holds(fluent, T) IF not occurs(action, T), holds(fluent, T-1), actions causes fluent change
+- `in(Obj, Loc)` | not `in(Obj, Loc)` IF {new observation comes at Loc} %% -->
+<!-- -  -->
 <hr>
 <p><strong>Causal Laws</strong></p>
 <!-- - xx CAUSES xx IF xx -->
 <ul>
-<li>open(robot, loc_close) CAUSES opened(loc_close)</li>
-<li>close(robot, loc_close) CAUSES not opened(loc_close)</li>
-<li>pick(robot, object) CAUSES holding(robot, object), not in(object, location)</li>
-<li>place(robot, object, location) CAUSES not holding(robot, object)</li>
-<li>navigate(robot, location) CAUSES at(robot, location), explored(location)</li>
+<li><code>open(Rob, Loc_close)</code> CAUSES <code>opened(Loc_close)</code></li>
 </ul>
-<p><u>I have some other rules the robot should follow,</u> but it's causing actions instead of caused by action, not sure where to put them:</p>
+<!-- -  -->
 <ul>
-<li>place(robot, object, loc_close) CAUSES close(robot, loc_close) IF #count(emptied(loc_open)) = #count(loc_open) OR #count(in(object, loc_close)) == maximun</li>
-<li>at(robot, locationA) CAUSES navigate(robot, locationB) IF #count(in(object, locationB)) == 0, #count(in(object, locationA)) &gt; 0</li>
+<li><code>close(Rob, Loc_close)</code> CAUSES <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Loc_close)</code></li>
 </ul>
-<!-- Can I assume all objects are recognisable and not occuluded? observe can be using pretrained CNN etc.  -->
-<!-- - observe(robot, location, object) CAUSES in(object, location) -->
+<!-- -  -->
+<ul>
+<li><code>pick(Rob, Obj)</code> CAUSES <code>in_hand(Rob, Obj)</code></li>
+<li><code>pick(Rob, Obj)</code> CAUSES  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in(Obj, Loc)</code> IF <code>at(Rob, Loc)</code></li>
+<li><code>pick(Rob, Obj)</code> CAUSES <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>hand_empty(R)</code></li>
+<li><code>pick(Rob, Obj)</code> CAUSES <code>count_in(Loc, N-1)</code> IF <code>count_in(Loc, N)</code>, <code>at(Rob, Loc)</code></li>
+</ul>
+<!-- -  -->
+<ul>
+<li><code>place(Rob, Obj)</code> CAUSES <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in_hand(Rob, Obj)</code></li>
+<li><code>place(Rob, Obj)</code> CAUSES   <code>in(Obj, Loc)</code> IF <code>at(Rob, Loc)</code></li>
+<li><code>place(Rob, Obj)</code> CAUSES <code>hand_empty(R)</code></li>
+<li><code>place(Rob, Obj)</code> CAUSES <code>count_in(Loc, N+1)</code> IF <code>count_in(Loc, N)</code>, <code>at(Rob, Loc)</code></li>
+</ul>
+<!-- -  -->
+<ul>
+<li><code>navigate(Rob, Loc)</code> CAUSES <code>at(Rob, Loc)</code></li>
+</ul>
+<!-- <u>I have some other rules the Rob should follow,</u> but it's causing actions instead of caused by action, not sure where to put them:
+- place(Rob, Obj, Loc_close) CAUSES close(Rob, Loc_close) IF #count(empty(Loc_open)) = #count(Loc_open) OR #count(in(Obj, Loc_close)) == maximun
+- at(Rob, LocA) CAUSES navigate(Rob, LocB) IF #count(in(Obj, LocB)) == 0, #count(in(Obj, LocA)) > 0 -->
+<!-- Can I assume all Objs are recognisable and not occuluded? observe can be using pretrained CNN etc.  -->
+<!-- - observe(Rob, Loc, Obj) CAUSES `in(Obj, Loc)` -->
 <hr>
 <p><strong>Executability Conditions</strong></p>
+<ul>
+<li>IMPOSSIBLE <code>open(Rob, Loc_open)</code></li>
+<li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>locked(Loc)</code></li>
+<li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>opened(Loc)</code></li>
+<li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Rob, Loc)</code></li>
+<li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>in_hand(Rob, Obj)</code></li>
+</ul>
 <!-- - IMPOSSIBLE xx IF xx -->
 <ul>
-<li>IMPOSSIBLE open(robot, location) IF opened(location)</li>
-<li>IMPOSSIBLE close(robot, location) IF not opened(location)</li>
-<li>IMPOSSIBLE open(robot, loc_open), close(robot, loc_open)</li>
-<li>IMPOSSIBLE open(robot, location), close(robot, location) IF not at(robot, location)</li>
-<li>IMPOSSIBLE pick(robot, object) IF holding(robot, object)</li>
-<li>IMPOSSIBLE pick(robot, object) IF not {at(robot, location), opened(location), in(object, location)}</li>
-<li>IMPOSSIBLE place(robot, object) IF not holding(robot, object)</li>
-<li>IMPOSSIBLE place(robot, object) IF at(robot, location), not opened(location)</li>
-<li>IMPOSSIBLE navigate(robot, location) IF at(robot, location)</li>
+<li>IMPOSSIBLE <code>close(Rob, Loc_open)</code></li>
+<li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Loc)</code></li>
+<li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Rob, Loc)</code></li>
+<li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <code>in_hand(Rob, Obj)</code></li>
 </ul>
-<!-- - IMPOSSIBLE observe(robot, location, object) IF xx -->
+<!-- -  -->
+<ul>
+<li>IMPOSSIBLE <code>pick(Rob, Obj1)</code> IF <code>in_hand(Rob, Obj2)</code></li>
+<li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>can_pick(Rob, Obj)</code></li>
+<li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <code>empty(Loc)</code></li>
+</ul>
+<!-- -  -->
+<ul>
+<li>IMPOSSIBLE <code>place(Rob, Obj)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in_hand(Rob, Obj)</code></li>
+<li>IMPOSSIBLE <code>place(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Loc)</code></li>
+<li>IMPOSSIBLE <code>place(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <code>full(Loc)</code></li>
+</ul>
+<!-- -  -->
+<ul>
+<li>IMPOSSIBLE <code>navigate(Rob, Loc)</code> IF <code>at(Rob, Loc)</code></li>
+</ul>
+<!-- - IMPOSSIBLE observe(Rob, Loc, Obj) IF xx -->
 <!-- |    |  |  |
 |---:|---|---|
 | IMPOSSIBLE xx | IF | xx |
 |  |  |  |  | -->
 <hr>
-<pre><code class="language-ASP"><code><div>%% instance.lp
-
-% objects
-#books = [book][1..2].
-#food = {apple, orange}.
-#object = #books + #food.
-
-#space_open = {table, sofa}.
-#container_close = {drawer}.
-#container_open = {box}.
-#container = #container_close + #container_open.
-% space that needed 'open' action before operating
-#loc_open =  #space_open + #container_open.
-% space that dose NOT needed 'open' action before operating
-#loc_close = #container_close.
-#location = #loc_open + #loc_close.
-
-% agents
-#robot = {rob1}.
-
-
-%% actions %%%%%%%%%%%%%%%%%%%%%%%%%%
-#action =
-% open drawer/fridge/door etc.
-open(#robot, #loc_close)+
-% opposite of open
-close(#robot, #loc_close)+
-% pick up objects
-pick(#robot, #object) +
-% opposite of pick
-place(#robot, #object, #location) +
-% TODO: is observe needed? How to refresh current scene else?
-observe(#robot, #location, #object) +
-% go to location from current place
-navigate(#robot, #location).
-
-
-%% fluents: inertial %%%%%%%%%%%%%%%%%%%%%%%%%%
-#inertial_fluent =
-opened(#location) +
-emptied(#location) +
-% if object in/on location
-in(#object, #location) +
-% is robot at location
-at(#robot, #location) +
-% location has been visited
-explored(#location) +
-% is robot holding the object
-holding(#robot, #object).
-
-
-%% fluents: defined %%%%%%%%%%%%%%%%%%%%%%%%%%
-% #defined_fluent
-
-#fluent = #inertial_fluent. % + #defined_fluent.
-
-%% history: %%%%%%%%%%%%%%%%%%%%%%%%%%
-#step = 1..k.
-holds(#fluent, T).
-occurs(#action, T).
-</div></code></code></pre>
-<hr>
 <!-- ---
 **State Constraints**
 - not obj_in(food, library)
 - not obj_in(books, kichen)
-- can_pick(robot, object) IF robot_in(robot, location), obj_in(object, location)
+- `can_pick(Rob, Obj)` IF Rob_in(Rob, Loc), obj_in(Obj, Loc)
 - xx IF xx
 
 ---
 **Causal Laws**
-- navigate(robot, location) CAUSES robot_in(robot, location)
-- pick(robot, object) CAUSES in_hand(robot, object)
-- place(robot, object) CAUSES obj_in(object, location)
+- `navigate(Rob, Loc)` CAUSES Rob_in(Rob, Loc)
+- `pick(Rob, Obj)` CAUSES in_hand(Rob, Obj)
+- `place(Rob, Obj)` CAUSES obj_in(Obj, Loc)
 - xx CAUSES xx IF xx
 
 ---
 **Executability Conditions**
-- IMPOSSIBLE navigate(robot, location) IF robot_in(robot, location)
-- IMPOSSIBLE pick(robot, object) IF not can_pick(robot, object)
-- IMPOSSIBLE pick(robot, object) IF in_hand(robot, object)
-- IMPOSSIBLE place(robot, object) IF not in_hand(robot, object)
+- IMPOSSIBLE `navigate(Rob, Loc)` IF Rob_in(Rob, Loc)
+- IMPOSSIBLE `pick(Rob, Obj)` IF not `can_pick(Rob, Obj)`
+- IMPOSSIBLE `pick(Rob, Obj)` IF in_hand(Rob, Obj)
+- IMPOSSIBLE `place(Rob, Obj)` IF not in_hand(Rob, Obj)
 -
-- IMPOSSIBLE place(robot, food) IF robot_in(robot, library)
+- IMPOSSIBLE place(Rob, food) IF Rob_in(Rob, library)
 - IMPOSSIBLE xx IF xx
 
 --- -->
-<!-- The robot will be working in the domain of “home assistant” and it will be asked to do fetching tasks. Robot should generate steps to achieve the goal.
+<!-- The Rob will be working in the domain of “home assistant” and it will be asked to do fetching tasks. Rob should generate steps to achieve the goal.
 3 rooms are provided. Kitchen, Library and Office.
 Atomic actions, pretrained actions will include:
 - pick(X)
@@ -286,7 +316,7 @@ Reasoning can be asked as follows:
 - Where do you find the book?
 - Why you not bring X from Y as I told you?(When X is in other place) -->
 
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         
     </body>
     </html>
