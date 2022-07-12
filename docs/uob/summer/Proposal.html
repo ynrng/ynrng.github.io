@@ -63,7 +63,8 @@
 }
 
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -82,37 +83,50 @@
         <h1 id="fetchbo">FetchBo</h1>
 <p>A Human-Robot Interaction Model Based on Commonsense Reasoning.</p>
 <blockquote>
-<p>Yanrong Wang - 2257486 - University of Birmingham</p>
+<p>Yanrong Wang - 2257486</p>
 </blockquote>
+<!-- > - University of Birmingham -->
 <!-- ## ABSTRACT -->
 <p><strong>Keywords</strong>: Knowledge representation; Reasoning; Chore Robot; Fetching Robot;</p>
 <h2 id="iintroduction">I.	INTRODUCTION</h2>
-<p>The purpose of the project is to introduce an efficient robot reasoning method which can help the robot better interact with human. When the robot is given a task, it will complete the task if possible and will suggest alternatives if exist. The robot will have the ability of reasoning about the results and actions it generated.
-While the ability of commonsense reasoning and deduction is natural for human, it is not a simple task for robots and AI for most AI systems are designed to achieve specific tasks [1]. In this research, a scalable and generalisable method will be proposed to address this problem and lead to more understandable and controllable future research. It is essential for human to understand the decision process in order to utilise technology in some areas like healthcare and everyday assistants, etc.</p>
+<p>The purpose of the project is to introduce an efficient robot reasoning method which can help the robot better interact with human. When the robot is given a task, it will complete the task if possible and will suggest alternatives if exist. The robot will have the ability of reasoning about the results and actions it generated.</p>
+<p><a href="https://dl.acm.org/doi/10.1145/2701413">While the ability of commonsense reasoning and deduction is natural for human, it is not a simple task for robots and AI for most AI systems are designed to achieve specific tasks</a>.</p>
+<p>In this research, a scalable and generalisable method will be proposed to address this problem and lead to more understandable and controllable future research. It is essential for human to understand the decision process in order to utilise technology in some areas like healthcare and everyday assistants, etc.</p>
 <h2 id="iirelated-work">II.	RELATED WORK</h2>
 <h3 id="asequential-decision-making">A.	Sequential Decision making</h3>
-<p>Researchers have made significant breakthroughs regarding generating sequence of pretrained basic actions for some high-level tasks, especially with the help of machine learning techniques [2] and large language models [3].
+<p>Researchers have made significant breakthroughs regarding generating sequence of pretrained basic actions for some high-level tasks, especially with the help of machine learning techniques [<a href="https://aihabitat.org/#citing-habitat">2</a>] and large language models [<a href="https://say-can.github.io/">3</a>].
 But normally, they lack the ability of reasoning and explain and require large amount of computing resources and time to achieve the goal. When task space needs to be extended, often those models need to be retrained and refined to suit the new scope.</p>
 <h3 id="breasoning">B.	Reasoning</h3>
-<p>Sap et al. [4] proposed 9 if-then relationships for everyday commonsense reasoning and used knowledge graph to represent them. A neural network is used to make the model more adaptive to new situation. This model has the ability to predict the sequence of events based on a given condition.
-Sridharan et al. [5-7] showed encouraging results of reasoning using Answer Set Programming (ASP) for grasping tasks in various settings. Machine learning methods like RL or CNN were used to generate and update knowledge sets.</p>
+<p><a href="https://arxiv.org/abs/1811.00146">Sap et al.</a> <!-- [4] --> proposed 9 if-then relationships for everyday commonsense reasoning and used knowledge graph to represent them. A neural network is used to make the model more adaptive to new situation. This model has the ability to predict the sequence of events based on a given condition.</p>
+<p>Sridharan et al. [<!-- Guide Deep Learning --><a href="https://arxiv.org/abs/2201.10266">5</a>, <!-- Transparent Decision Making --><a href="https://link.springer.com/article/10.1007/s42979-021-00573-0">6</a>, <!-- Autonomous Surgical Task Planning --><a href="https://link.springer.com/article/10.1007/s10994-021-06013-7">7</a>] showed encouraging results of reasoning using Answer Set Programming for grasping tasks in various settings. Machine learning methods like RL or CNN were used to generate and update knowledge sets.</p>
 <h2 id="iiibackground">III.	BACKGROUND</h2>
 <h3 id="areasoning">A.	Reasoning</h3>
 <ol>
 <li>
-<p>Action Language
-Action languages are formal models of part of a natural language used for describing transition diagrams of dynamic domains. Our architecture uses the action language AL [20], which has a sorted signature with three types of sorts: statics, which are domain attributes whose values do not change over time; fluents, which are domain attributes that can be changed; and actions. Fluents can be inertial, which can be directly modified by actions and obey the laws of inertia, or defined, which are not directly changed by actions and do not obey inertia laws. A domain literal is a domain attribute p or its negation ¬p. AL allows three types of statements:
-l a causes lin impossible a0, . . . , ak
-if p0,...,pm if p0,...,pm if p0,...,pm
-State Constraints
-Causal Laws Executability Conditions
-where a is an action, l is a literal, lin is an inertial literal, and p0, . . . , pm are domain literals. Our architecture uses AL to describe the transition diagram of any given domain, as described below.</p>
+<p>Action Language</p>
+<p>Action languages are formal models of part of a natural language used for describing transition diagrams of dynamic domains. Our architecture uses the action language <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi><mi mathvariant="script">L</mi></mrow><annotation encoding="application/x-tex">\mathcal{AL}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathcal">A</span><span class="mord mathcal">L</span></span></span></span></span> <!--[20]-->, which has a sorted signature with three types of sorts: statics, which are domain attributes whose values do not change over time; fluents, which are domain attributes that can be changed; and actions. Fluents can be inertial, which can be directly modified by actions and obey the laws of inertia, or defined, which are not directly changed by actions and do not obey inertia laws. A domain literal is a domain attribute p or its negation ¬p. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi><mi mathvariant="script">L</mi></mrow><annotation encoding="application/x-tex">\mathcal{AL}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathcal">A</span><span class="mord mathcal">L</span></span></span></span></span> allows three types of statements:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>State Constraints</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,...,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
 </li>
 <li>
-<p>ASP
-Good knowledge representation language model should be elaboration tolerant. To achieve this, uniform problem representation should be used.
-Basic methodology to construct an ASP is to first generate a potential stable model candidates then eliminate invalid candidates by integrity constraints test. After that, apply optimisation to the program, include logical optimisations.
-Integrity constraint is used for eliminating unwanted solution candidates and is of form:
+<p><strong>Causal Laws</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> causes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">l_{in}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,...,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><strong>Executability Conditions</strong> impossible <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">a_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,..., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">a_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,...,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>where a is an action, l is a literal, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">l_{in}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is an inertial literal, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,...,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> are domain literals. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi><mi mathvariant="script">L</mi></mrow><annotation encoding="application/x-tex">\mathcal{AL}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathcal">A</span><span class="mord mathcal">L</span></span></span></span></span> is used to describe the transition diagram of any given domain, and can be easily translated to ASP.</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>ASP</p>
+<p>Good knowledge representation language model should be elaboration tolerant. To achieve this, uniform problem representation should be used.</p>
+<p>Basic methodology to construct an ASP is to first generate a potential stable model candidates then eliminate invalid candidates by integrity constraints test. After that, apply optimisation to the program, include logical optimisations.</p>
+</li>
+</ol>
+<!-- Integrity constraint is used for eliminating unwanted solution candidates and is of form:
 :- atom_1, … atom_k, not atom_k+1, ... not atom_n
 Choice rule is used for providing choices over subsets of atoms and is of form:
 {a_1,...,a_m} :- a_m+1,...,a_n, not a_n+1, ... , not a_o
@@ -120,12 +134,10 @@ Cardinality rule is used for controlling cardinality of subsets of and is of for
 a_0 :- l { a_1 ,..., a_m, not a_m+1 ,..., not a_n } u
 Weighted literal w : k associates weight w with literal k.
 Weight rule is used for bounding sum of subsets of literal weights and is of form:
-a_0 :- l { w_1 : a_1, ...,w_m : a_m, w_m+1 : not a_m+1, ..., w_n : not a_n } u
-Conditional Literals</p>
-</li>
-<li>
-<p>Graph Neural Network</p>
-</li>
+a_0 :- l { w_1 : a_1, ...,w_m : a_m, w_m+1 : not a_m+1, ..., w_n : not a_n } u -->
+ <!-- Conditional Literals -->
+<ol start="3">
+<li>Graph Neural Network</li>
 </ol>
 <h3 id="bmachine-learning-methods">B.	Machine Learning Methods</h3>
 <ol>
@@ -135,60 +147,80 @@ Conditional Literals</p>
 <li>Natural Language Model</li>
 </ol>
 <!-- ## IV.	METHODOLOGY -->
-<h2 id="vimplementation-including-validation-and-testing">V.	IMPLEMENTATION (INCLUDING VALIDATION AND TESTING)</h2>
-<h3 id="aproject-scope-specification-in-action-language">A.	Project Scope Specification in Action Language</h3>
-<!-- The axioms of the RA domain include statements such as:
-pickup(robot, object) causes in_hand(robot, object) (4a)
-obj_relation(below,B,A) if obj_relation(above,A,B) (4b)
-obj_relation(behind,B,A) if obj_relation(infront,A,B) (4c)
-impossible pickup(robot, object) if in_hand(robot, object) (4d)
-impossible putdown(robot, object, location) if not in_hand(robot, object) (4e) -->
-<hr>
-<p>The robot will be working in the domain of “home assistant” and it will be asked to do fetching tasks. Robot should generate steps to achieve the goal.
+<h2 id="vimplementation">V.	IMPLEMENTATION</h2>
+<!-- (INCLUDING VALIDATION AND TESTING) -->
+<h3 id="aproject-specification-in-action-language">A.	<a href="action_language.html">Project Specification in Action Language</a></h3>
+<!-- The robot will be working in the domain of “home assistant” and it will be asked to do fetching tasks. Robot should generate steps to achieve the goal.
 3 rooms are provided. Kitchen, Library and Office.
 Atomic actions, pretrained actions will include:
-•	pick(X)
-•	place(Y)
-•	move_item(X, Y)
-•	navigate_to(X)
-•	search_item (X)
-Following items will be used and can be recognised: (=&gt; indicates “can be in” and is calculated with possibility, X= indicates “not allowed”, both are learnable through time when certain actions are taken)
-•	Book (B1, B2) =&gt; Library, Office
-•	Toy (T1, T2) =&gt; Office
-•	Apple (A), Orange (O) =&gt; Kitchen
-•	Water Bottle (W), Coffee(C), Energy drink(E) =&gt; Kitchen, Office
-Extra relationships and rules between items and actions (learnable through reinforcement learning and human feedbacks):
-•	Boring is opposite of Happy in 80% of time
-•	Toy add to happiness for 70% of time
-•	Coffee and Energy drink add to energy for 90%, 80% of time respectively
-•	……
-Instructions can be given as follows:
-•	I am hungry/ boring/tired.
-•	Can you bring me X from Y. (item X does not necessarily be in position Y)
-Reasoning can be asked as follows:
-•	Why do you bring Coffee instead of Apple? (When I am tired)
-•	Where do you find the book?
-•	Why you not bring X from Y as I told you?(When X is in other place)</p>
+-	pick(X)
+-	place(Y)
+-	move_item(X, Y)
+-	navigate_to(X)
+-	search_item (X)
+Following items will be used and can be recognised: (=> indicates “can be in” and is calculated with possibility, X= indicates “not allowed”, both are learnable through time when certain actions are taken)
+-	Book (B1, B2) => Library, Office
+-	Toy (T1, T2) => Office
+-	Apple (A), Orange (O) => Kitchen
+-	Water Bottle (W), Coffee(C), Energy drink(E) => Kitchen, Office -->
+<!-- Extra relationships and rules between items and actions (learnable through reinforcement learning and human feedbacks):
+-	Boring is opposite of Happy in 80% of time
+-	Toy add to happiness for 70% of time
+-	Coffee and Energy drink add to energy for 90%, 80% of time respectively
+-	…… -->
+<p>Instructions can be given as follows:</p>
+<!-- -	I am hungry/ boring/tired. -->
+<ul>
+<li>Can you bring me X from Y. (item X does not necessarily be in position Y)</li>
+<li>Clean the table.</li>
+</ul>
+<p>Reasoning can be asked as follows:</p>
+<ul>
+<li>Why do you bring Coffee instead of Apple? (When I am tired)</li>
+<li>Where do you find the book?</li>
+<li>Why you not bring X from Y as I told you?(When X is in other place)</li>
+</ul>
 <h3 id="bresources">B.	Resources</h3>
 <ol>
-<li>Hardware
-•	A physical mobile robot operating on ROS system equipped with camera and laser/LiDAR sensors, provided by Robot
-•	lab (Need instructions of access to robot).
-•	Laptop (Mac/Ubuntu system).
-•	No intense GPU usage is needed.</li>
-<li>Software
-•	ROS environment on laptop.
-•	Answer Set Programming (ASP) ROSoClingo [8] for reasoning.
-•	Python 3 environment for interactions with robot and others.
-•	Gitlab for source repository [8].</li>
+<li>Hardware</li>
 </ol>
+<ul>
+<li>A physical mobile robot operating on ROS system equipped with camera and laser/LiDAR sensors, provided by Robot lab (Need instructions of access to robot).</li>
+<li>Laptop (Mac/Ubuntu system).</li>
+<li>No intense GPU usage is needed.</li>
+</ul>
+<ol start="2">
+<li>Software</li>
+</ol>
+<ul>
+<li><a href="https://docs.ros.org/en/foxy/Citations.html">ROS2</a> environment on laptop.</li>
+<li>Answer Set Programming (ASP) <a href="https://github.com/iensen/sparc/wiki/Publications-on-SPARC">SPARC</a> for reasoning.</li>
+<li>Python 3 environment for logic, main program, interactions with robot, etc.</li>
+<li><a href="https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2021/yxw257/-/tree/main">Gitlab</a> for source repository.</li>
+</ul>
 <h3 id="cdata">C.	Data</h3>
-<p>The data needed for demonstration of the proposed method will be collected during coding and testing stage. The demonstration of physical robot will happen inside the CS building, University of Birmingham. A map of the environment will be acquired. A simulation environment will be created based this the map during developing and testing stage. Test cases will be designed based on the map and can be automatically generated by program. A collection of base knowledge will be designed during the coding process. For reinforcement learning, data will be gathered from the environment and test cases.
-If more complex testing cases are required, there are 3d open source dataset available (eg. Replica [9])</p>
+<p>The data needed for demonstration of the proposed method will be collected during coding and testing stage. The demonstration of physical robot will happen inside the CS building, University of Birmingham. A map of the environment will be acquired beforehead. A simulation environment will be created based this the map during developing and testing stage. Test cases will be designed based on the map and can be automatically generated by program.</p>
+<p>A collection of base knowledge will be designed during the coding process. For reinforcement learning, data will be gathered from the environment and test cases.</p>
+<p>If more complex testing cases are required, there are 3d open source dataset available (eg. <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a>)</p>
 <h2 id="viresults-and-evaluation">VI.	RESULTS AND EVALUATION</h2>
-<p>In evaluation and testing stage, I will invite some volunteers (less than 10 people) to evaluate the output of the system.</p>
-<h2 id="viisummary-and-conclusions">VII.	SUMMARY AND CONCLUSIONS</h2>
-<h2 id="progress">Progress</h2>
+<p>The main evaluation will be done mostly automaticly.
+For one test case, some conditions and a goal will be given. When the goal is achieved, the test case is considered success. The success rate will be collected and be treated as the performance of the system.</p>
+<p>When needed, human volunteers will be invited (less than 10 people) to evaluate the output of the system, to decide whether it &quot;makes sense&quot;.</p>
+<!-- ## VII.	SUMMARY AND CONCLUSIONS -->
+<h2 id="progress-and-plans">Progress and plans</h2>
+<h3 id="done">Done</h3>
+<ul>
+<li>Basic settings and rules for robot to generate plans.</li>
+</ul>
+<h3 id="todos">TODOs</h3>
+<ul>
+<li>Generating explanations.</li>
+<li>Refine rules for partially observed environment.</li>
+<li>Interactions with robot and dynamic input.</li>
+<li>Refine rules for ability to cover unseen cases / abnormal cases. (contradictions in observations and plans)</li>
+<li><em>(Optional)</em> Refine models. e.g. using actual volume instead of counts to decide if a place if full.</li>
+<li><em>(Optional)</em> Do actual grasping and avoid collisions.</li>
+</ul>
 <!-- ## REFERENCES
 [1]	E. Davis and G. Marcus, “Commonsense reasoning and commonsense knowledge in artificial intelligence,” Commun ACM, vol. 58, no. 9, pp. 92–103, 2015.
 [2]	A. Szot et al., “Habitat 2.0: Training home assistants to rearrange their habitat,” Advances in Neural Information Processing Systems, vol. 34, pp. 251–266, 2021.
@@ -199,7 +231,7 @@ If more complex testing cases are required, there are 3d open source dataset ava
 [7]	D. Meli, M. Sridharan, and P. Fiorini, “Inductive learning of answer set programs for autonomous surgical task planning,” Machine Learning, vol. 110, no. 7, pp. 1739–1763, 2021.
 [8]	Y. Wang, “Gitlab Repository,” 2022. https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2021/yxw257
 [9]	J. Straub et al., “The Replica dataset: A digital replica of indoor spaces,” arXiv preprint arXiv:1906.05797, 2019. -->
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         
     </body>
     </html>
