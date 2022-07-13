@@ -11,4 +11,11 @@ do
   echo $file
   sed -i '' "s+$search+$replace+g" $file
   sed -i '' 's+.png"+.png?raw=true"+g' $file
+
+  SUB='uob/summer'
+  if [[ "$file" == *"$SUB"* ]]; then
+    sed -i '' 's+<meta name="robots" content="noindex">++g' $file
+    sed -i '' 's+<head>+<head>\n<meta name="robots" content="noindex">+g' $file
+  fi
+
 done
