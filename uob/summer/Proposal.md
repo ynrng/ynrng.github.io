@@ -116,12 +116,19 @@ When needed, human volunteers will be invited (less than 10 people) to evaluate 
 ###  Done
 - Basic settings and rules for robot to generate plans.
 ### TODOs
+- Recover original status for #location.
 - Generating explanations.
 - Refine rules for partially observed environment.
 - Interactions with robot and dynamic input.
 - Refine rules for ability to cover unseen cases / abnormal cases. (contradictions in observations and plans)
 - *(Optional)* Refine models. e.g. using actual volume instead of counts to decide if a place if full.
 - *(Optional)* Do actual grasping and avoid collisions.
+<!-- -  -->
+- From what I understand, when I use this as a planning tool, I should write another program (possibly Python), generate xxx.sp using partial knowledge and rules, get a plan. Then make a robot (Python) to do several steps in the plan, get new observations and knowledge about surroundings, generate new xxx.sp and generate new plans. Loop. Is that correct?
+- Is it better to do the above-mentioned python program first or should I focus on getting explanations first (using test data)? What would be the suggested next step?
+<!-- - What are the alternatives the robot gonna suggesting? I will try to have some answers before next meeting. -->
+- Unexpected situations:
+  - locations can be locked (maybe contaminated, or drawer be locked). robot will make observations and adjust the plan accordingly.
 
 <!-- ## REFERENCES
 [1]	E. Davis and G. Marcus, “Commonsense reasoning and commonsense knowledge in artificial intelligence,” Commun ACM, vol. 58, no. 9, pp. 92–103, 2015.

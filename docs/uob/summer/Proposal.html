@@ -215,12 +215,26 @@ For one test case, some conditions and a goal will be given. When the goal is ac
 </ul>
 <h3 id="todos">TODOs</h3>
 <ul>
+<li>Recover original status for #location.</li>
 <li>Generating explanations.</li>
 <li>Refine rules for partially observed environment.</li>
 <li>Interactions with robot and dynamic input.</li>
 <li>Refine rules for ability to cover unseen cases / abnormal cases. (contradictions in observations and plans)</li>
 <li><em>(Optional)</em> Refine models. e.g. using actual volume instead of counts to decide if a place if full.</li>
 <li><em>(Optional)</em> Do actual grasping and avoid collisions.</li>
+</ul>
+<!-- -  -->
+<ul>
+<li>From what I understand, when I use this as a planning tool, I should write another program (possibly Python), generate xxx.sp using partial knowledge and rules, get a plan. Then make a robot (Python) to do several steps in the plan, get new observations and knowledge about surroundings, generate new xxx.sp and generate new plans. Loop. Is that correct?</li>
+<li>Is it better to do the above-mentioned python program first or should I focus on getting explanations first (using test data)? What would be the suggested next step?</li>
+</ul>
+<!-- - What are the alternatives the robot gonna suggesting? I will try to have some answers before next meeting. -->
+<ul>
+<li>Unexpected situations:
+<ul>
+<li>locations can be locked (maybe contaminated, or drawer be locked). robot will make observations and adjust the plan accordingly.</li>
+</ul>
+</li>
 </ul>
 <!-- ## REFERENCES
 [1]	E. Davis and G. Marcus, “Commonsense reasoning and commonsense knowledge in artificial intelligence,” Commun ACM, vol. 58, no. 9, pp. 92–103, 2015.

@@ -14,7 +14,7 @@ impossible a0,...,ak if p0,...,pm; Executability Conditions
 where a is an action, l is a literal, l_in is an inertial literal, and p0,..., pm are domain literals -->
 
 ---
-The Rob will be working in the domain of “home assistant” and it will be asked to do fetching related tasks. Rob should generate steps to achieve the goal.
+The Robot will be working in the domain of “home assistant” and it will be asked to do fetching related tasks. Rob should generate steps to achieve the goal.
 
 <!-- W4
 --- -->
@@ -42,23 +42,32 @@ Unknown, can be observed (obs):
 
 Initial setup (examples):
 ```ASP
-in(book1, table).
-in(book2, sofa).
-in(book3, drawer).
-in(apple, table).
-in(orange, box).
-at(rob1, table).
+holds(at(rob1, table), 0).
+holds(hand_empty(R), 0).
+
+-holds(opened(L), 0) :- #loc_close(L).
+
+holds(in(book1, table), 0).
+holds(in(apple, table), 0).
+holds(in(book3, drawer), 0).
+holds(locked(box), 0).
 ```
 
 <!-- TODO count can be replaced by volume if time permits -->
 Goal (examples):
 - clean = #minimise {in(Obj, space_open): in(Obj, container_open)}.
 ```ASP
-empty(table).
-empty(sofa).
+goal(I) :-
+  holds(empty(table), I),
+  holds(empty(sofa), I),
+  holds(hand_empty(R), I).
 
 % solution generated
-% {occurs(navigate(rob1,drawer),0), occurs(open(rob1,drawer),1), occurs(navigate(rob1,table),2), occurs(pick(rob1,book1),3), occurs(navigate(rob1,drawer),4), occurs(place(rob1,book1),5), occurs(navigate(rob1,table),6), occurs(pick(rob1,apple),7), occurs(navigate(rob1,drawer),8), occurs(place(rob1,apple),9)}
+% {occurs(navigate(rob1,drawer),0), occurs(open(rob1,drawer),1),
+occurs(navigate(rob1,table),2), occurs(pick(rob1,book1),3),
+occurs(navigate(rob1,drawer),4), occurs(place(rob1,book1),5),
+occurs(navigate(rob1,table),6), occurs(pick(rob1,apple),7),
+occurs(navigate(rob1,drawer),8), occurs(place(rob1,apple),9)}
 ```
 
 - fetch:
@@ -79,24 +88,25 @@ in(#object, #location) +
 in_hand(#robot, #object). -->
 
 - $\neg$ `at(R, L2)` IF `at(R, L1)`, `L1`$\neq$`L2`
-- $\neg$ `count_in(L, N1)` IF `count_in(L, N2)`, `N1`$\neq$`N2`
 - $\neg$ `in(O, L2)` IF `in(O, L1)`, `L1`$\neq$`L2`
+<!-- -  -->
+- `count_in(L, N)` IF `N = #count{O : in(O, L))`
+- $\neg$ `count_in(L, N1)` IF `count_in(L, N2)`, `N1`$\neq$`N2`
+<!-- -  -->
 - $\neg$ `in_hand(R, O1)` IF `in_hand(R, O2)`, `O1`$\neq$`O2`
+<!-- - $\neg$ `in_hand(R, O)` IF `hand_empty(R)` -->
+<!-- -  -->
 - `opened(Loc_open)`
-- $\neg$ `opened(Loc)` IF  `locked(Loc)`
+<!-- - $\neg$ `opened(Loc)` IF  `locked(Loc)` -->
 <!-- -  -->
 - `empty(Loc)` IF `count_in(Loc, 0)`
 <!-- - $\neg$ `empty(Loc)` IF` count_in(Loc, N)`, `N > 0` -->
 <!-- -  -->
 <!-- maximum Objs to fill the specific container, should use weighted val to represent volume if time permits  -->
 - `full(Loc)` IF `count_in(Loc, 10)`, `L = drawer`
-<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = drawer`, `N < 10` -->
 - `full(Loc)` IF `count_in(Loc, 3)`, `L = box`
-<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = drawer`, `N < 3` -->
 - `full(Loc)` IF `count_in(Loc, 10)`, `L = table`
-<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = table`, `N < 10` -->
 - `full(Loc)` IF `count_in(Loc, 5)`, `L = sofa`
-<!-- - $\neg$ `full(Loc)` IF` count_in(Loc, N)`, `L = sofa`, `N < 5` -->
 
 <!-- - $\neg$ `empty(Loc)` IF not `empty(Loc)` -->
 <!-- -  -->
@@ -104,12 +114,13 @@ in_hand(#robot, #object). -->
 <!-- -  -->
 <!-- - $\neg$ locked(Loc_close) IF not locked(Loc_close) -->
 <!-- -  -->
-- `can_pick(Rob, Obj)` IF `at(Rob, Loc)`, `opened(Loc)`, `in(Obj, Loc)` `L1!`$\neq$`L2`
+- `can_pick(Rob, Obj)` IF `at(Rob, Loc)`, `opened(Loc)`, `in(Obj, Loc)`, `L1!`$\neq$`L2`
 <!-- history -->
 <!-- - step=step+1 IF not goal()
 - holds(fluent, T) IF not occurs(action, T), holds(fluent, T-1), actions causes fluent change
 - `in(Obj, Loc)` | not `in(Obj, Loc)` IF {new observation comes at Loc} %% -->
 <!-- -  -->
+- `hand_empty(R)` IF `0 == #count{O : in_hand(R, O)}`
 
 ---
 **Causal Laws**
@@ -120,13 +131,13 @@ in_hand(#robot, #object). -->
 <!-- -  -->
 - `pick(Rob, Obj)` CAUSES `in_hand(Rob, Obj)`
 - `pick(Rob, Obj)` CAUSES  $\neg$ `in(Obj, Loc)` IF `at(Rob, Loc)`
-- `pick(Rob, Obj)` CAUSES $\neg$ `hand_empty(R)`
-- `pick(Rob, Obj)` CAUSES `count_in(Loc, N-1)` IF `count_in(Loc, N)`, `at(Rob, Loc)`
+<!-- - `pick(Rob, Obj)` CAUSES $\neg$ `hand_empty(R)` -->
+<!-- - `pick(Rob, Obj)` CAUSES `count_in(Loc, N-1)` IF `count_in(Loc, N)`, `at(Rob, Loc)` -->
 <!-- -  -->
 - `place(Rob, Obj)` CAUSES $\neg$ `in_hand(Rob, Obj)`
 - `place(Rob, Obj)` CAUSES   `in(Obj, Loc)` IF `at(Rob, Loc)`
-- `place(Rob, Obj)` CAUSES `hand_empty(R)`
-- `place(Rob, Obj)` CAUSES `count_in(Loc, N+1)` IF `count_in(Loc, N)`, `at(Rob, Loc)`
+<!-- - `place(Rob, Obj)` CAUSES `hand_empty(R)` -->
+<!-- - `place(Rob, Obj)` CAUSES `count_in(Loc, N+1)` IF `count_in(Loc, N)`, `at(Rob, Loc)` -->
 <!-- -  -->
 - `navigate(Rob, Loc)` CAUSES `at(Rob, Loc)`
 
@@ -146,6 +157,7 @@ in_hand(#robot, #object). -->
 - IMPOSSIBLE `open(Rob, Loc)` IF `in_hand(Rob, Obj)`
 <!-- - IMPOSSIBLE xx IF xx -->
 - IMPOSSIBLE `close(Rob, Loc_open)`
+- IMPOSSIBLE `close(Rob, Loc)` IF `locked(Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF $\neg$ `opened(Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF $\neg$ `at(Rob, Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF `in_hand(Rob, Obj)`
@@ -153,10 +165,12 @@ in_hand(#robot, #object). -->
 - IMPOSSIBLE `pick(Rob, Obj1)` IF `in_hand(Rob, Obj2)`
 - IMPOSSIBLE `pick(Rob, Obj)` IF $\neg$ `can_pick(Rob, Obj)`
 - IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `empty(Loc)`
+- IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `locked(Loc)`
 <!-- -  -->
 - IMPOSSIBLE `place(Rob, Obj)` IF $\neg$ `in_hand(Rob, Obj)`
 - IMPOSSIBLE `place(Rob, Obj)` IF `at(Rob, Loc)`, $\neg$ `opened(Loc)`
 - IMPOSSIBLE `place(Rob, Obj)` IF `at(Rob, Loc)`, `full(Loc)`
+- IMPOSSIBLE `place(Rob, Obj)` IF `at(Rob, Loc)`, `locked(Loc)`
 <!-- -  -->
 - IMPOSSIBLE `navigate(Rob, Loc)` IF `at(Rob, Loc)`
 <!-- - IMPOSSIBLE observe(Rob, Loc, Obj) IF xx -->
