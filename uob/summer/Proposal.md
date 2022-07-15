@@ -130,6 +130,16 @@ When needed, human volunteers will be invited (less than 10 people) to evaluate 
 - Unexpected situations:
   - locations can be locked (maybe contaminated, or drawer be locked). robot will make observations and adjust the plan accordingly.
 
+Qs - W5:
+- From what I understand, when I use this as a planning tool, I should write another program (possibly Python), generate xxx.sp using partial knowledge and rules, get a plan. Then make a robot (Python) to do several steps in the plan, get new observations and knowledge about surroundings, generate new xxx.sp and generate new plans. Loop. Is that correct?
+-Is it better to do the above-mentioned python program first or should I focus on getting explanations first (using test data)? What would be the suggested next step?
+- What are the alternatives the robot gonna suggesting? I will try to have some answers before next meeting.
+
+Explanations:
+
+1. structures all literals for sentences
+2. human can choose the level of explanation
+
 <!-- ## REFERENCES
 [1]	E. Davis and G. Marcus, “Commonsense reasoning and commonsense knowledge in artificial intelligence,” Commun ACM, vol. 58, no. 9, pp. 92–103, 2015.
 [2]	A. Szot et al., “Habitat 2.0: Training home assistants to rearrange their habitat,” Advances in Neural Information Processing Systems, vol. 34, pp. 251–266, 2021.
