@@ -30,7 +30,7 @@ The Robot will be working in the domain of “home assistant” and it will be a
 2. Underlined in "Causal Laws" section.
 3. Should I include history related occurs() and holds in this? -->
 
-`Sorts` definition in [fetchbot.sp](https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2021/yxw257/-/blob/main/asp/fetchbot.sp)
+`Sorts` definition in [fetchbot.sp](https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2021/yxw257/-/blob/main/yolobot/src/yolobot_asp/scripts/asp/fetchbot.sp)
 
 ---
 Given:

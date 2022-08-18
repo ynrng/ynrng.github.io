@@ -86,7 +86,7 @@
 <p>references:</p>
 </blockquote>
 <blockquote>
-<p><a href="https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html">Building ROS 2 on macOS</a></p>
+<p><a href="https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html">Building ROS 2 on macOS</a></p>
 </blockquote>
 <blockquote>
 <p><a href="http://mamykin.com/posts/building-ros2-on-macos-big-sur-m1/">How to build and install ROS2 on macOS Big Sur M1</a></p>
@@ -112,8 +112,15 @@ I have <code>python@3.9</code> installed through <code>brew</code></p>
 <span class="hljs-built_in">export</span> PYTHONPATH=<span class="hljs-variable">$PYTHONPATH</span>:/opt/homebrew/lib/python3/site-packages <span class="hljs-comment"># depends on your version of python</span>
 </div></code></pre>
 <h2 id="install-prerequisites">Install prerequisites</h2>
-<p>Follow <a href="https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#install-prerequisites">Install prerequisites</a> for Step 1-3.</p>
+<p>Follow <a href="https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#install-prerequisites">Install prerequisites</a> for Step 1-3.</p>
 <p>For Step <strong>4</strong>, replace <code>/usr/local/opt/qt@5</code> with <code>brew --prefix qt@5</code></p>
+<pre><code class="language-sh"><div><span class="hljs-comment"># install dependencies for Rviz</span>
+brew install qt@5 freetype assimp
+
+<span class="hljs-comment"># Add the Qt directory to the PATH and CMAKE_PREFIX_PATH</span>
+<span class="hljs-built_in">export</span> CMAKE_PREFIX_PATH=<span class="hljs-variable">$CMAKE_PREFIX_PATH</span>:$(brew --prefix qt@5)
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:$(brew --prefix qt@5)/bin
+</div></code></pre>
 <p>Follow Step 5</p>
 <p>For Step <strong>6</strong>, copy everything else except for <code>mypy==0.761</code> (which should be <code>mypy</code>) and <code>pygraphviz</code>. So you have sth like this.</p>
 <pre><code class="language-bash"><div>python3 -m pip install -U \
@@ -127,14 +134,13 @@ I have <code>python@3.9</code> installed through <code>brew</code></p>
 </div></code></pre>
 <p>To install <code>pygraphviz</code>. Run,</p>
 <pre><code class="language-bash"><div>brew install graphviz
-pip3 install graphviz
-pip3 install cgraph
+pip3 install graphviz cgraph
 <span class="hljs-comment"># Thank you [Enrico Massa](https://github.com/pygraphviz/pygraphviz/issues/100#issuecomment-899253728) for the following solution.</span>
 pip3 install pygraphviz --global-option=build_ext --global-option=<span class="hljs-string">&quot;-I<span class="hljs-subst">$(brew --prefix)</span>/include&quot;</span> --global-option=<span class="hljs-string">&quot;-L<span class="hljs-subst">$(brew --prefix)</span>/lib&quot;</span>
 </div></code></pre>
 <h2 id="sip--ros2-code">SIP &amp; Ros2 Code</h2>
-<p>No need to <a href="https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#disable-system-integrity-protection-sip">Disable System Integrity Protection (SIP)</a></p>
-<p>Follow <a href="https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#get-the-ros-2-code">Get the ROS 2 code</a></p>
+<p>No need to <a href="https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#disable-system-integrity-protection-sip">Disable System Integrity Protection (SIP)</a></p>
+<p>Follow <a href="https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#get-the-ros-2-code">Get the ROS 2 code</a></p>
 <h2 id="build-the-ros-2-code">Build the ROS 2 code</h2>
 <blockquote>
 <p>Basically follow <a href="http://mamykin.com/posts/building-ros2-on-macos-big-sur-m1/">Build the ROS 2 code</a> part instead of the official 2-line commands.</p>
@@ -151,6 +157,7 @@ pip3 install pygraphviz --global-option=build_ext --global-option=<span class="h
     -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
     -DCMAKE_OSX_ARCHITECTURES=<span class="hljs-string">&quot;arm64&quot;</span> \
     -DCMAKE_PREFIX_PATH=$(brew --prefix):$(brew --prefix qt@5)
+  --packages-up-to gazebo_ros_pkgs \
 </div></code></pre>
 <blockquote>
 <p>All --cmake-args are necessary to properly build the distro on Big Sur + M1.</p>
@@ -189,10 +196,10 @@ make[1]: *** [CMakeFiles/ogre-v1.12.1.dir/all] Error 2
 make: *** [all] Error 2
 </div></code></pre>
 <p>patch <code>src/ros2/rviz/rviz_ogre_vendor/CMakeLists.txt</code></p>
-<pre><code class="language-diff"><div><span class="hljs-comment">diff --git a/CMakeLists.txt b/CMakeLists.txt</span>
+<pre><code class="language-diff"><div><span class="hljs-comment">diff --git a/rviz_ogre_vendor/CMakeLists.txt b/rviz_ogre_vendor/CMakeLists.txt</span>
 <span class="hljs-comment">index faac7e1b..c36877c3 100644</span>
-<span class="hljs-comment">--- a/CMakeLists.txt</span>
-<span class="hljs-comment">+++ b/CMakeLists.txt</span>
+<span class="hljs-comment">--- a/rviz_ogre_vendor/CMakeLists.txt</span>
+<span class="hljs-comment">+++ b/rviz_ogre_vendor/CMakeLists.txt</span>
 <span class="hljs-meta">@@ -120,7 +120,7 @@</span> macro(build_ogre)
      set(OGRE_CXX_FLAGS &quot;${OGRE_CXX_FLAGS} /w /EHsc&quot;)
    elseif(APPLE)
@@ -275,8 +282,11 @@ While <code>rviz/rviz_assimp_vendor/rviz_assimp_vendor-extras.cmake.in</code> de
  endforeach()
  set(rviz_assimp_vendor_LIBRARY_DIRS ${ASSIMP_LIBRARY_DIRS})
 </div></code></pre>
+<p><a href="https://github.com/nextcloud/desktop/issues/4365">Build fails on macOS if qt6 is installed</a></p>
+<pre><code class="language-sh"><div>brew remove qt6
+</div></code></pre>
 <h2 id="environment-setup-and-testing">Environment setup and Testing</h2>
-<pre><code class="language-bash"><div>chmod 777 ./install/setup.*
+<pre><code class="language-bash"><div>chmod 777 ./install/*.sh
 <span class="hljs-built_in">source</span> ./install/setup.sh
 ./install/rviz2/bin/rviz2 <span class="hljs-comment"># testing rviz2 for example</span>
 </div></code></pre>

@@ -4,7 +4,7 @@ Yanrong @ 2022
 
 >references:
 
-> [Building ROS 2 on macOS](https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html)
+> [Building ROS 2 on macOS](https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html)
 
 > [How to build and install ROS2 on macOS Big Sur M1](http://mamykin.com/posts/building-ros2-on-macos-big-sur-m1/)
 
@@ -37,9 +37,17 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
 export PYTHONPATH=$PYTHONPATH:/opt/homebrew/lib/python3/site-packages # depends on your version of python
 ```
 ## Install prerequisites
-Follow [Install prerequisites](https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#install-prerequisites) for Step 1-3.
+Follow [Install prerequisites](https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#install-prerequisites) for Step 1-3.
 
 For Step **4**, replace `/usr/local/opt/qt@5` with `brew --prefix qt@5`
+```sh
+# install dependencies for Rviz
+brew install qt@5 freetype assimp
+
+# Add the Qt directory to the PATH and CMAKE_PREFIX_PATH
+export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:$(brew --prefix qt@5)
+export PATH=$PATH:$(brew --prefix qt@5)/bin
+```
 
 Follow Step 5
 
@@ -58,16 +66,15 @@ python3 -m pip install -U \
 To install `pygraphviz`. Run,
 ```bash
 brew install graphviz
-pip3 install graphviz
-pip3 install cgraph
+pip3 install graphviz cgraph
 # Thank you [Enrico Massa](https://github.com/pygraphviz/pygraphviz/issues/100#issuecomment-899253728) for the following solution.
 pip3 install pygraphviz --global-option=build_ext --global-option="-I$(brew --prefix)/include" --global-option="-L$(brew --prefix)/lib"
 ```
 
 ## SIP & Ros2 Code
-No need to [Disable System Integrity Protection (SIP)](https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#disable-system-integrity-protection-sip)
+No need to [Disable System Integrity Protection (SIP)](https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#disable-system-integrity-protection-sip)
 
-Follow [Get the ROS 2 code](https://docs.ros.org/en/galactic/Installation/macOS-Development-Setup.html#get-the-ros-2-code)
+Follow [Get the ROS 2 code](https://docs.ros.org/en/galactic/Installation/Alternatives/macOS-Development-Setup.html#get-the-ros-2-code)
 
 
 ## Build the ROS 2 code
@@ -87,7 +94,9 @@ colcon build \
     -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
     -DCMAKE_OSX_ARCHITECTURES="arm64" \
     -DCMAKE_PREFIX_PATH=$(brew --prefix):$(brew --prefix qt@5)
+  --packages-up-to gazebo_ros_pkgs \
 ```
+
 > All --cmake-args are necessary to properly build the distro on Big Sur + M1.
 
 And you are not gonna be successful in the first trial. When the error pops. Apply the patches.
@@ -131,10 +140,10 @@ make: *** [all] Error 2
 ```
 patch `src/ros2/rviz/rviz_ogre_vendor/CMakeLists.txt`
 ```diff
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff --git a/rviz_ogre_vendor/CMakeLists.txt b/rviz_ogre_vendor/CMakeLists.txt
 index faac7e1b..c36877c3 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/rviz_ogre_vendor/CMakeLists.txt
++++ b/rviz_ogre_vendor/CMakeLists.txt
 @@ -120,7 +120,7 @@ macro(build_ogre)
      set(OGRE_CXX_FLAGS "${OGRE_CXX_FLAGS} /w /EHsc")
    elseif(APPLE)
@@ -226,9 +235,14 @@ index 8e41fe66..abd7bedc 100644
  set(rviz_assimp_vendor_LIBRARY_DIRS ${ASSIMP_LIBRARY_DIRS})
 ```
 
+[Build fails on macOS if qt6 is installed](https://github.com/nextcloud/desktop/issues/4365)
+```sh
+brew remove qt6
+```
+
 ## Environment setup and Testing
 ```bash
-chmod 777 ./install/setup.*
+chmod 777 ./install/*.sh
 source ./install/setup.sh
 ./install/rviz2/bin/rviz2 # testing rviz2 for example
 ```
