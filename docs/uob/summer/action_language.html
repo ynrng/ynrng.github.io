@@ -168,20 +168,12 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(R, L2)</code> IF <code>at(R, L1)</code>, <code>L1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>L2</code></li>
 </ul>
 <!-- -  -->
-<ul>
-<li>🆕 holds(status_changed(F), I) IF holds(F, 0), -holds(F, I), #inertial_fluent(F).</li>
-<li>🆕 holds(status_changed(F), I) IF holds(F, I), -holds(F, 0), #inertial_fluent(F).
-<blockquote>
-<p>for environment reset</p>
-</blockquote>
-</li>
-</ul>
+<!-- -  holds(status_changed(F), I) IF holds(F, 0), -holds(F, I), #inertial_fluent(F).
+-  holds(status_changed(F), I) IF holds(F, I), -holds(F, 0), #inertial_fluent(F).
+   > for environment reset -->
 <!-- - -->
 <ul>
-<li>🆕 <code>count_in(L, N)</code> IF <code>N = #count{Obj : at(Obj, L)}</code>
-<blockquote>
-<p>combine at &amp; in</p>
-</blockquote>
+<li><code>count_in(L, N)</code> IF <code>N = #count{Obj : at(Obj, L)}</code> <!-- > combine at & in -->
 </li>
 </ul>
 <!-- -  -->
@@ -223,9 +215,7 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 - holds(fluent, T) IF not occurs(action, T), holds(fluent, T-1), actions causes fluent change
 - `at(Obj, Loc)` | not `at(Obj, Loc)` IF {new observation comes at Loc} %% -->
 <!-- -  -->
-<ul>
-<li><code>hand_empty(R)</code> IF <code>0 == #count{O : in_hand(R, O)}</code></li>
-</ul>
+<!-- - `hand_empty(R)` IF `0 == #count{O : in_hand(R, O)}` -->
 <hr>
 <p><strong>Causal Laws</strong></p>
 <!-- - xx CAUSES xx IF xx -->
@@ -239,10 +229,7 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 <!-- -  -->
 <ul>
 <li><code>pick(Rob, Obj)</code> CAUSES <code>in_hand(Rob, Obj)</code></li>
-<li>🆕 <code>pick(Rob, Obj)</code> CAUSES  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Obj, Loc)</code> IF <code>at(Rob, Loc)</code>
-<blockquote>
-<p>combine at &amp; in</p>
-</blockquote>
+<li><code>pick(Rob, Obj)</code> CAUSES  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Obj, Loc)</code> IF <code>at(Rob, Loc)</code> <!-- > combine at & in -->
 </li>
 </ul>
 <!-- - `pick(Rob, Obj)` CAUSES $\neg$ `hand_empty(R)` -->
@@ -250,17 +237,15 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 <!-- -  -->
 <ul>
 <li><code>place(Rob, Obj)</code> CAUSES <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>in_hand(Rob, Obj)</code></li>
-<li>🆕 <code>place(Rob, Obj)</code> CAUSES   <code>at(Obj, Loc)</code> IF <code>at(Rob, Loc)</code></li>
+<li><code>place(Rob, Obj)</code> CAUSES   <code>at(Obj, Loc)</code> IF <code>at(Rob, Loc)</code></li>
 </ul>
 <!-- - `place(Rob, Obj)` CAUSES `hand_empty(R)` -->
 <!-- - `place(Rob, Obj)` CAUSES `count_in(Loc, N+1)` IF `count_in(Loc, N)`, `at(Rob, Loc)` -->
 <!-- -  -->
 <ul>
-<li>🆕 <code>move(Rob, Loc)</code> CAUSES <code>at(Rob, Loc)</code>
-<blockquote>
-<p>combine at &amp; in</p>
-</blockquote>
+<li><code>move(Rob, Loc)</code> CAUSES <code>at(Rob, Loc)</code> <!-- > combine at & in -->
 </li>
+<li><code>lock(Ex, Loc)</code> CAUSES <code>locked(Loc)</code></li>
 </ul>
 <!-- <u>I have some other rules the Rob should follow,</u> but it's causing actions instead of caused by action, not sure where to put them:
 - place(Rob, Obj, Loc_close) CAUSES close(Rob, Loc_close) IF #count(empty(Loc_open)) = #count(Loc_open) OR #count(at(Obj, Loc_close)) == maximun
@@ -269,16 +254,16 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 <!-- - observe(Rob, Loc, Obj) CAUSES `at(Obj, Loc)` -->
 <hr>
 <p><strong>Executability Conditions</strong></p>
+<!-- - IMPOSSIBLE `open(Rob, Loc_open)` -->
 <ul>
-<li>IMPOSSIBLE <code>open(Rob, Loc_open)</code></li>
 <li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>locked(Loc)</code></li>
 <li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>opened(Loc)</code></li>
 <li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Rob, Loc)</code></li>
 <li>IMPOSSIBLE <code>open(Rob, Loc)</code> IF <code>in_hand(Rob, Obj)</code></li>
 </ul>
 <!-- - IMPOSSIBLE xx IF xx -->
+<!-- - IMPOSSIBLE `close(Rob, Loc_open)` -->
 <ul>
-<li>IMPOSSIBLE <code>close(Rob, Loc_open)</code></li>
 <li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <code>locked(Loc)</code></li>
 <li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Loc)</code></li>
 <li>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Rob, Loc)</code></li>
@@ -287,13 +272,12 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 <!-- -  -->
 <ul>
 <li>IMPOSSIBLE <code>pick(Rob, Obj1)</code> IF <code>in_hand(Rob, Obj2)</code></li>
-<li>🆕 IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc1)</code>, <code>at(Obj, Loc2)</code>, <code>Loc1</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span> <code>Loc2</code></li>
-<li>🆕 IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Obj, Loc)</code>
-<blockquote>
-<p>replace can_pick</p>
-</blockquote>
+<li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc1)</code>, <code>at(Obj, Loc2)</code>, <code>Loc1</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span> <code>Loc2</code></li>
+<li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>opened(Obj, Loc)</code><!-- > replace can_pick -->
 </li>
-<li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <code>empty(Loc)</code></li>
+</ul>
+<!-- - IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `empty(Loc)` -->
+<ul>
 <li>IMPOSSIBLE <code>pick(Rob, Obj)</code> IF <code>at(Rob, Loc)</code>, <code>locked(Loc)</code></li>
 </ul>
 <!-- -  -->
@@ -305,13 +289,14 @@ occurs(move(rob1,drawer),8), occurs(place(rob1,apple),9)}
 </ul>
 <!-- -  -->
 <ul>
-<li>🆕 IMPOSSIBLE <code>move(Rob, Loc)</code> IF <code>at(Rob, Loc)</code>
-<blockquote>
-<p>combine at &amp; in</p>
-</blockquote>
+<li>IMPOSSIBLE <code>move(Rob, Loc)</code> IF <code>at(Rob, Loc)</code></li>
+</ul>
+<!-- -  -->
+<ul>
+<li>IMPOSSIBLE <code>lock(Ex, Loc)</code> IF <code>locked(Loc)</code> <!-- > combine at & in -->
 </li>
 </ul>
-<!-- - 🆕 IMPOSSIBLE `move(Rob, Loc)` IF `locked(Space_open)`
+<!-- - IMPOSSIBLE `move(Rob, Loc)` IF `locked(Space_open)`
    > locked space should not be accessed by robot -->
 <!-- - IMPOSSIBLE observe(Rob, Loc, Obj) IF xx -->
 <!-- |    |  |  |

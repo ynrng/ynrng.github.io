@@ -83,11 +83,44 @@
         <h1 id="language-model">Language Model</h1>
 <h2 id="construct-questions">construct questions</h2>
 <ul>
-<li>why</li>
-<li>what</li>
-<li>where</li>
-<li>how</li>
+<li>why do</li>
+<li>why not do</li>
+<li>why believe</li>
+<li>why not believe</li>
 </ul>
+<!-- - what
+- where
+- how -->
+<h2 id="w13---example-run">W13 - example run</h2>
+<p>For generated plan:</p>
+<p>{occurs(move(rob1,drawer),0),<br>
+occurs(open(rob1,drawer),1),<br>
+occurs(move(rob1,table),2),<br>
+occurs(pick(rob1,book1),3),<br>
+occurs(move(rob1,drawer),4),<br>
+occurs(place(rob1,book1),5),<br>
+occurs(move(rob1,table),6),<br>
+occurs(pick(rob1,food1),7),<br>
+occurs(move(rob1,drawer),8),<br>
+occurs(place(rob1,food1),9),<br>
+occurs(close(rob1,drawer),10)}</p>
+<h3 id="why-do">why do</h3>
+<blockquote>
+<p>Q1: Why did you move to drawer in step 0?</p>
+</blockquote>
+<p>A1: Because I want  to be at drawer, So I can open drawer.</p>
+<blockquote>
+<p>Q2: Why did you open drawer in step 1?</p>
+</blockquote>
+<p>A2-<em>long ver</em>: Because I want drawer to be opened, So I can pick book1, place book1, pick food1, place food1, close drawer.</p>
+<p>A2-<em>short ver</em>: Because I want drawer to be opened, So I can pick book1.</p>
+<blockquote>
+<p>Q3: Why did you move to table in step 2?</p>
+</blockquote>
+<p>A3: Because I want  to be at table.</p>
+<h3 id="why-not-do">why not do</h3>
+<h3 id="why-believe">why believe</h3>
+<h3 id="why-not-believe">why not believe</h3>
 <h2 id="nlp-with-python">nlp with python</h2>
 <blockquote>
 <p><a href="https://www.nltk.org/">nltk</a> and <a href="https://www.nltk.org/book/ch00.html">book</a></p>
@@ -97,16 +130,16 @@
 <h2 id="qs">Qs:</h2>
 <p>Language Model.
 How detail.
-can i say only these questions can be asked.
-Are they</p>
-<h2 id="allowed-interactions">allowed interactions</h2>
-<p>why do you [open] the [drawer] at step [1]?
-why do you [move] to [drawer] at step [0]?
+can i say only these questions can be asked.</p>
+<!-- ## allowed interactions
+- why do you [open] the [drawer] at step [1]?
+  > (track using Causal Laws) I want the drawer to be opened. Tracking depth: 1. Answer
+- why do you believe [apple] is at [table] at step [2]?
+  > track using -->
+<!-- why do you [move] to [drawer] at step [0]?
 why do you [pick] up [apple] at step [2]?
-why do you [place] up [apple] at step [3]?</p>
+why do you [place] up [apple] at step [3]? -->
 <!-- why do you (change plans) at step [2]? -->
-<p>what do you plan to do next?
-where can I find apple?</p>
 <p>there will be NO HOW questins.</p>
 
         

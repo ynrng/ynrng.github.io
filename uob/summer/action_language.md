@@ -92,12 +92,12 @@ at(apple, sofa).
 <!-- - xx IF xx -->
 - $\neg$ `at(R, L2)` IF `at(R, L1)`, `L1`$\neq$`L2`
 <!-- -  -->
--  🆕 holds(status_changed(F), I) IF holds(F, 0), -holds(F, I), #inertial_fluent(F).
--  🆕 holds(status_changed(F), I) IF holds(F, I), -holds(F, 0), #inertial_fluent(F).
-   > for environment reset
+<!-- -  holds(status_changed(F), I) IF holds(F, 0), -holds(F, I), #inertial_fluent(F).
+-  holds(status_changed(F), I) IF holds(F, I), -holds(F, 0), #inertial_fluent(F).
+   > for environment reset -->
 <!-- - -->
-- 🆕 `count_in(L, N)` IF `N = #count{Obj : at(Obj, L)}`
-   > combine at & in
+- `count_in(L, N)` IF `N = #count{Obj : at(Obj, L)}`
+   <!-- > combine at & in -->
 <!-- -  -->
 - $\neg$ `in_hand(R, O1)` IF `in_hand(R, O2)`, `O1`$\neq$`O2`
 <!-- - $\neg$ `in_hand(R, O)` IF `hand_empty(R)` -->
@@ -127,7 +127,7 @@ at(apple, sofa).
 - holds(fluent, T) IF not occurs(action, T), holds(fluent, T-1), actions causes fluent change
 - `at(Obj, Loc)` | not `at(Obj, Loc)` IF {new observation comes at Loc} %% -->
 <!-- -  -->
-- `hand_empty(R)` IF `0 == #count{O : in_hand(R, O)}`
+<!-- - `hand_empty(R)` IF `0 == #count{O : in_hand(R, O)}` -->
 
 ---
 **Causal Laws**
@@ -137,18 +137,19 @@ at(apple, sofa).
 - `close(Rob, Loc_close)` CAUSES $\neg$ `opened(Loc_close)`
 <!-- -  -->
 - `pick(Rob, Obj)` CAUSES `in_hand(Rob, Obj)`
-- 🆕 `pick(Rob, Obj)` CAUSES  $\neg$ `at(Obj, Loc)` IF `at(Rob, Loc)`
-   > combine at & in
+- `pick(Rob, Obj)` CAUSES  $\neg$ `at(Obj, Loc)` IF `at(Rob, Loc)`
+   <!-- > combine at & in -->
 <!-- - `pick(Rob, Obj)` CAUSES $\neg$ `hand_empty(R)` -->
 <!-- - `pick(Rob, Obj)` CAUSES `count_in(Loc, N-1)` IF `count_in(Loc, N)`, `at(Rob, Loc)` -->
 <!-- -  -->
 - `place(Rob, Obj)` CAUSES $\neg$ `in_hand(Rob, Obj)`
-- 🆕 `place(Rob, Obj)` CAUSES   `at(Obj, Loc)` IF `at(Rob, Loc)`
+- `place(Rob, Obj)` CAUSES   `at(Obj, Loc)` IF `at(Rob, Loc)`
 <!-- - `place(Rob, Obj)` CAUSES `hand_empty(R)` -->
 <!-- - `place(Rob, Obj)` CAUSES `count_in(Loc, N+1)` IF `count_in(Loc, N)`, `at(Rob, Loc)` -->
 <!-- -  -->
-- 🆕 `move(Rob, Loc)` CAUSES `at(Rob, Loc)`
-   > combine at & in
+- `move(Rob, Loc)` CAUSES `at(Rob, Loc)`
+   <!-- > combine at & in -->
+- `lock(Ex, Loc)` CAUSES `locked(Loc)`
 
 <!-- <u>I have some other rules the Rob should follow,</u> but it's causing actions instead of caused by action, not sure where to put them:
 - place(Rob, Obj, Loc_close) CAUSES close(Rob, Loc_close) IF #count(empty(Loc_open)) = #count(Loc_open) OR #count(at(Obj, Loc_close)) == maximun
@@ -159,23 +160,23 @@ at(apple, sofa).
 
 ---
 **Executability Conditions**
-- IMPOSSIBLE `open(Rob, Loc_open)`
+<!-- - IMPOSSIBLE `open(Rob, Loc_open)` -->
 - IMPOSSIBLE `open(Rob, Loc)` IF `locked(Loc)`
 - IMPOSSIBLE `open(Rob, Loc)` IF `opened(Loc)`
 - IMPOSSIBLE `open(Rob, Loc)` IF $\neg$ `at(Rob, Loc)`
 - IMPOSSIBLE `open(Rob, Loc)` IF `in_hand(Rob, Obj)`
 <!-- - IMPOSSIBLE xx IF xx -->
-- IMPOSSIBLE `close(Rob, Loc_open)`
+<!-- - IMPOSSIBLE `close(Rob, Loc_open)` -->
 - IMPOSSIBLE `close(Rob, Loc)` IF `locked(Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF $\neg$ `opened(Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF $\neg$ `at(Rob, Loc)`
 - IMPOSSIBLE `close(Rob, Loc)` IF `in_hand(Rob, Obj)`
 <!-- -  -->
 - IMPOSSIBLE `pick(Rob, Obj1)` IF `in_hand(Rob, Obj2)`
-- 🆕 IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc1)`, `at(Obj, Loc2)`, `Loc1` $\neq$ `Loc2`
-- 🆕 IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, $\neg$ `opened(Obj, Loc)`
-  > replace can_pick
-- IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `empty(Loc)`
+- IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc1)`, `at(Obj, Loc2)`, `Loc1` $\neq$ `Loc2`
+- IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, $\neg$ `opened(Obj, Loc)`
+  <!-- > replace can_pick -->
+<!-- - IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `empty(Loc)` -->
 - IMPOSSIBLE `pick(Rob, Obj)` IF `at(Rob, Loc)`, `locked(Loc)`
 <!-- -  -->
 - IMPOSSIBLE `place(Rob, Obj)` IF $\neg$ `in_hand(Rob, Obj)`
@@ -183,9 +184,11 @@ at(apple, sofa).
 - IMPOSSIBLE `place(Rob, Obj)` IF `at(Rob, Loc)`, `full(Loc)`
 - IMPOSSIBLE `place(Rob, Obj)` IF `at(Rob, Loc)`, `locked(Loc)`
 <!-- -  -->
-- 🆕 IMPOSSIBLE `move(Rob, Loc)` IF `at(Rob, Loc)`
-   > combine at & in
-<!-- - 🆕 IMPOSSIBLE `move(Rob, Loc)` IF `locked(Space_open)`
+- IMPOSSIBLE `move(Rob, Loc)` IF `at(Rob, Loc)`
+<!-- -  -->
+- IMPOSSIBLE `lock(Ex, Loc)` IF `locked(Loc)`
+   <!-- > combine at & in -->
+<!-- - IMPOSSIBLE `move(Rob, Loc)` IF `locked(Space_open)`
    > locked space should not be accessed by robot -->
 <!-- - IMPOSSIBLE observe(Rob, Loc, Obj) IF xx -->
 
