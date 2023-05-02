@@ -6,6 +6,7 @@
 Like breaking & making contacts problem, Deformable obj are very common in everyday life and in industry. we as human don't think much when dealing with them but they are quite difficult problems for robots.
 we say  Deformable Objects Representing and Manipulating, but it is actually a large area of problems and often task specific.
 Have to deal with complex geometry, $\infin$ states, complex contacts/ frictions/ forces.
+
 ![](images/bg1.png)
 
 
@@ -62,7 +63,7 @@ Have to deal with complex geometry, $\infin$ states, complex contacts/ frictions
 ### _Alan Kuntz & Isabella Huang_: Large-Scale Simulation for Calibration-Free Sim to Real Transfer of Deformable Object Manipulation
   <!-- tofu example -->
   * full state tensor ( pos & vel, element stress tensor, contact point& force)
-  * use force detect instead of $\Delta$distance to determine safe to pick/reached desired pos
+  * use force detect instead of $\Delta$ distance to determine safe to pick/reached desired pos
   * IsaacGym - sim - (quite difficult to model, definitions for vertex)
   * DeformerNet - surgery
 ### _Carolyn Matl_: Deformable Elasto-Plastic Object Shaping using an Elastic Hand

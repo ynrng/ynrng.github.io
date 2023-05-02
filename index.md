@@ -12,6 +12,7 @@
 
 
 ## UoB (AI & ML)
+### [Intelligent Robotics](uob/intelligent_robotics/ir.md)
 ### [Advanced Robotics](uob/advanced_robotics/README.md)
 - [FK/IK](uob/advanced_robotics/FK.IK.md)
 - [Dynamics](uob/advanced_robotics/Dynamics.md)
@@ -21,6 +22,8 @@
 ### Neural Computation
 - [Basics](uob/neural_computation/nc_basics.md)
 - [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
+
+[paper](/uob/~/paper/deformable.md)
 <!-- ```
 .
 ├── _config.yml
