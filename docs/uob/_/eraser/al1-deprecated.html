@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>&lbrack;Home&rbrack;&lpar;&period;&period;&sol;&period;&period;&sol;index&period;md&rpar; &gt; &lbrack;Robot Vision&rbrack;&lpar;README&period;md&rpar;</title>
+        <title>AL of the Eraser</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -2586,7 +2586,8 @@ body,
 }
 
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -2619,54 +2620,126 @@ body,
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <link type="text/css" rel="stylesheet" href="../md.css">
-<h1 id="home--robot-vision"><a href="../../index.html">Home</a> &gt; <a href="README.html">Robot Vision</a></h1>
+                <h1 id="al-of-the-eraser">AL of the Eraser</h1>
+<p>actions include:</p>
 <ul>
-<li><a href="CV.html">CV</a></li>
-<li><a href="3D.html">3D</a></li>
-<li><a href="RV.html">RV</a></li>
-<li><a href="DL.html">DL</a></li>
+<li>make contact</li>
+<li>break contact</li>
+<li>move the arm in the air.</li>
+<li>follow the line given 2 points on board ( with force in direction of the surface normal ).</li>
+<li>make observations</li>
 </ul>
-<p>W1
-•Introduction to computer vision &amp; module admin. •Image formation
-W2
-•Camera parameters, camera calibration •Image noise &amp; filtering
-W3
-•Image gradient, edge detection •Matching, binary image analysis
-Edge Detection
-W4
-•Image texture &amp; Image segmentation •Fitting: voting and the Hough transform
-Noise Filtering
-W5
-•image warping and stitching
-•Local features: image matching and detection
-Hough Transform
-W6
-•Active Imaging
-W7
-•Local features (SIFT, SURF, HoG etc)
-W8
-•Multiple-view Geometry
-W9
-•Indexing instances •Image categorisation •Face recognition •Object recognition
-W10
-•Deep learning for computer vision</p>
-<h2 id="questions">Questions</h2>
-<ol>
-<li><strong>Introduction</strong>
+<h2 id="higher-lever-planner">Higher lever planner</h2>
+<hr>
+<p><strong>Definitions</strong></p>
+<pre><code>#points = [p][1..6]. % p0 is rest pos in air
+#lines=[l][1..6].
+#tris = [triangle][1..2].
+#sqrs = {square1}.
+#parts = #points + #lines.
+#shapes= #tris + #sqrs.
+#patterns = #lines + #shapes.
+
+%% Actions %%%%%%%%%%%%%%%%%%%%%%%%
+#action_agent = move(#robot, #points, #boolean).
+#action_exo = observe(#exogenous, #patterns).
+
+
+%% Fluents %%%%%%%%%%%%%%%%%%%%%%%%
+#inertial_fluent =
+  cleaned(#patterns)
+  + belongs(#parts, #patterns)
+  + at(#robot, #points, #boolean).
+
+#defined_fluent = can_move(#robot, #points).
+
+</code></pre>
+<p><strong>State Constraints</strong></p>
+<!-- - xx IF xx -->
 <ul>
-<li>Why is computational vision challenging? Some applications.</li>
-</ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(R, P2, B2)</code> IF <code>at(R, P1, B1)</code>, <code>P1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>P2</code></p>
 </li>
-<li><strong>Registration &amp; Segmentation</strong>
-<ul>
-<li>How image segmentation (histogram-based) depends on image resolution?</li>
-</ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(R, P1, B1)</code> IF <code>at(R, P1, B2)</code>, <code>B1</code><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span><code>B2</code></p>
+<blockquote>
+<p>ee at one position per step</p>
+</blockquote>
 </li>
-</ol>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>belongs(L1, L2)</code> IF <code>#lines(L1)</code>, <code>#lines(L2)</code>.</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>belongs(P3, L)</code> IF <code>belongs(P1, L)</code>, <code>belongs(P2, L)</code>, <code>P1!=P2!=P3</code>, <code>#lines(L)</code>.</p>
+<blockquote>
+<p>have and only 2 points per line</p>
+</blockquote>
+</li>
+<li>
+<p><code>cleaned(S)</code> IF
+<code>N1 = #count{L1 : cleaned(L1), belongs(L1, S), #lines(L1)}</code>,
+<code>N2 = #count{L2 : belongs(L2, S), #lines(L2)}</code>,
+<code>#shapes(S)</code>, <code>#num(N1)</code>, <code>#num(N2)</code>,
+<code>N1 == N2</code>.</p>
+<blockquote>
+<p>define <code>clean</code> for shapes</p>
+</blockquote>
+</li>
+<li>
+<p><code>can_move(R,P2)</code> IF
+<code>at(R, P1, true)</code>,
+<code>belongs(P1, L)</code>,
+<code>belongs(P2, L)</code>,
+<code>#lines(L)</code>, <code>P1!=P2</code>.</p>
+</li>
+<li>
+<p><code>can_move(R, P2)</code> IF
+<code>at(R, P1, false)</code>.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Causal Laws</strong></p>
+<!-- - xx CAUSES xx IF xx -->
+<ul>
+<li><code>move(R, P, B)</code> CAUSES <code>at(R, P, B)</code></li>
+<li><code>move(R, P2, true)</code>,
+<code>at(R, P1, true)</code>,
+<code>belongs(P1, L)</code>,
+<code>belongs(P2, L)</code>,
+<code>#lines(L)</code>, <code>P1!=P2</code> CAUSES <code>cleaned(L)</code>
+<blockquote>
+<p>define <code>clean</code> for lines</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p><strong>Executability Conditions</strong></p>
+<!-- - IMPOSSIBLE xx IF xx -->
+<ul>
+<li>
+<p>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>at(Rob, Loc)</code></p>
+</li>
+<li>
+<p>IMPOSSIBLE <code>close(Rob, Loc)</code> IF <code>in_hand(Rob, Obj)</code></p>
+</li>
+<li>
+<p>IMPOSSIBLE <code>move(R, P, B)</code> IF<code> at(R, P, B)</code>.</p>
+</li>
+<li>
+<p>IMPOSSIBLE <code>move(R, P2, true)</code> IF <code>at(R, P1, false)</code>, <code>P1 != P2</code>.</p>
+</li>
+<li>
+<p>IMPOSSIBLE <code>move(R, P2, false)</code> IF <code>at(R, P1, true)</code>, <code>P1 != P2</code>.</p>
+</li>
+<li>
+<p>IMPOSSIBLE <code>move(R, P2, true)</code> IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span> <code>can_move(R, P2)</code>.</p>
+</li>
+</ul>
+<h2 id="lower-lever-planner">Lower lever planner</h2>
+<hr>
 </div>
         </div>
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */

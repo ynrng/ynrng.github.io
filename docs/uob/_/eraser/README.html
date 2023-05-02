@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>&lbrack;Home&rbrack;&lpar;&period;&period;&sol;&period;&period;&sol;index&period;md&rpar; &gt; &lbrack;Robot Vision&rbrack;&lpar;README&period;md&rpar;</title>
+        <title>Eraser</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -2619,51 +2619,65 @@ body,
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <link type="text/css" rel="stylesheet" href="../md.css">
-<h1 id="home--robot-vision"><a href="../../index.html">Home</a> &gt; <a href="README.html">Robot Vision</a></h1>
+                <h1 id="eraser">Eraser</h1>
 <ul>
-<li><a href="CV.html">CV</a></li>
-<li><a href="3D.html">3D</a></li>
-<li><a href="RV.html">RV</a></li>
-<li><a href="DL.html">DL</a></li>
+<li><a href="al.html">Action Language</a></li>
 </ul>
-<p>W1
-•Introduction to computer vision &amp; module admin. •Image formation
-W2
-•Camera parameters, camera calibration •Image noise &amp; filtering
-W3
-•Image gradient, edge detection •Matching, binary image analysis
-Edge Detection
-W4
-•Image texture &amp; Image segmentation •Fitting: voting and the Hough transform
-Noise Filtering
-W5
-•image warping and stitching
-•Local features: image matching and detection
-Hough Transform
-W6
-•Active Imaging
-W7
-•Local features (SIFT, SURF, HoG etc)
-W8
-•Multiple-view Geometry
-W9
-•Indexing instances •Image categorisation •Face recognition •Object recognition
-W10
-•Deep learning for computer vision</p>
-<h2 id="questions">Questions</h2>
-<ol>
-<li><strong>Introduction</strong>
-<ul>
-<li>Why is computational vision challenging? Some applications.</li>
-</ul>
-</li>
-<li><strong>Registration &amp; Segmentation</strong>
-<ul>
-<li>How image segmentation (histogram-based) depends on image resolution?</li>
-</ul>
-</li>
-</ol>
+<!-- - [Inspection](Proposal.md) (W5)
+- [Language Model](Language_Model.md)
+- Demo (W12) -->
+<!-- - Dessetation -->
+<h3 id="briefs">Briefs</h3>
+<p>the position of all the points (1-18)
+which points belong to which shapes, ( 1,2,3 make triangle_1, 14,15,16 make triangle_2  )
+we want minimal contacts ( if I start from point1 to point2, then I will prefer to go to point3 then point1 to finish the triangle instead of lifting the arm and going to other points)
+the arm is holding an eraser.
+the goal can be 'erase 2 triangles'
+the planner first selects which 2 triangles it plans to erase ( e.g. t1 and t2)
+when it needs to execute erase triangle1, it expands the task to follow the path from point1 to point 2 to point 3.
+the planner then expands the task to move to near point1, predict force and make contact at point1, stay contact and move to point2, stay contact and move to point3. break contact.
+before break contact, the planner will make observations and decide if the patterns are cleaned properly. ( e.g. if not enough forces are applied, the patterns might become half erased and need to repeat part of the task. e.g. maybe only from point1 to point3 is not cleaned properly. since the arm should be in the position of point1, the planner should add path point1-point3  to next step before lifting arm )
+if there's remaining patterns after the first trial, the planner will add more forces for the next path when cleaning.
+after completion of the 1st subtask, it moves on the next subtasks until all the subtasks are done.</p>
+<hr>
+<h2 id="30jan">30/Jan</h2>
+<h3 id="initial-states">Initial states:</h3>
+<p>Pattern={Triangle, Square}; <br>
+Points={p1...7}; <br>
+p1={0,1}...p7={12,18}; <br>
+Triangle={t1};Square={s1}; <br>
+t1={l12,l23,l13};s1={l45,l56,l67,l47} <br>
+l12={p1,p2}...</p>
+<h3 id="goals">goals:</h3>
+<p>clean triangles: path_cleaned(l, 1), l in t, t in Triangle <br>
+minimise {#step(make_contact_with_white_board(),n)}</p>
+<h3 id="actions">actions:</h3>
+<p>move_to_point(robot,p0)</p>
+<blockquote>
+<p>pre: p0 not on the whiteboard but should be near of one of the points, it is a predefined point above the actual point so to make contact prediction easier. <br>
+effect: current_position(p0), not in_contact(robot, whiteboard)</p>
+</blockquote>
+<p>make_contact_with_white_board(robot,p0)</p>
+<blockquote>
+<p>pre: |current_position_p - p0|&lt;=theta <br>
+effect: in_contact(robot, whiteboard)</p>
+</blockquote>
+<p>move_to_point_with_force(robot,p1,p2)</p>
+<blockquote>
+<p>pre: in_contact(robot, whiteboard), current_position(p1), p1 in l, p2 in l <br>
+effect: path_cleaned(l12, 0), current_position(p2)</p>
+</blockquote>
+<p>make_obs(robot, l12)</p>
+<blockquote>
+<p>pre: path_cleaned(l12, 0) <br>
+effect: path_cleaned(l12, 1), -path_cleaned(l12, 0)  or -path_cleaned(l12, 0) , adjust_force()</p>
+</blockquote>
+<p>adjust_force(robot, f)</p>
+<blockquote>
+<p>effect: it will use suitable force to try to clean the pattern in one go. I haven't thought clearly how to actually adjust it. It should be more on control loop.</p>
+</blockquote>
+<p>path_cleaned(l12, 0) means l12 is believed to be clean but not confirmed. path_cleaned(l12, 1) is confirmed status for cleanness.
+make_obs will be limited to the related area. not the whole environment.</p>
 </div>
         </div>
         

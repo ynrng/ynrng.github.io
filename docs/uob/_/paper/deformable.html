@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>&lbrack;Home&rbrack;&lpar;&period;&period;&sol;&period;&period;&sol;index&period;md&rpar; &gt; &lbrack;Robot Vision&rbrack;&lpar;README&period;md&rpar;</title>
+        <title>Representing and Manipulating Deformable Objects &commat; ICRA2022</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -2586,7 +2586,8 @@ body,
 }
 
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -2619,54 +2620,113 @@ body,
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <link type="text/css" rel="stylesheet" href="../md.css">
-<h1 id="home--robot-vision"><a href="../../index.html">Home</a> &gt; <a href="README.html">Robot Vision</a></h1>
+                <h1 id="representing-and-manipulating-deformable-objects--icra2022">Representing and Manipulating Deformable Objects @ ICRA2022</h1>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=Ir0hUawBWrQ">Youtube</a></p>
+</blockquote>
+<h2 id="introductions">Introductions</h2>
+<p>Like breaking &amp; making contacts problem, Deformable obj are very common in everyday life and in industry. we as human don't think much when dealing with them but they are quite difficult problems for robots.
+we say  Deformable Objects Representing and Manipulating, but it is actually a large area of problems and often task specific.
+Have to deal with complex geometry, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> states, complex contacts/ frictions/ forces.</p>
+<p><img src="file:////Users/wendy/code/projects/ynrng.github.io/uob/_/paper/images/bg1.png?raw=true" alt=""></p>
+<h2 id="challenges">CHALLENGES</h2>
 <ul>
-<li><a href="CV.html">CV</a></li>
-<li><a href="3D.html">3D</a></li>
-<li><a href="RV.html">RV</a></li>
-<li><a href="DL.html">DL</a></li>
-</ul>
-<p>W1
-•Introduction to computer vision &amp; module admin. •Image formation
-W2
-•Camera parameters, camera calibration •Image noise &amp; filtering
-W3
-•Image gradient, edge detection •Matching, binary image analysis
-Edge Detection
-W4
-•Image texture &amp; Image segmentation •Fitting: voting and the Hough transform
-Noise Filtering
-W5
-•image warping and stitching
-•Local features: image matching and detection
-Hough Transform
-W6
-•Active Imaging
-W7
-•Local features (SIFT, SURF, HoG etc)
-W8
-•Multiple-view Geometry
-W9
-•Indexing instances •Image categorisation •Face recognition •Object recognition
-W10
-•Deep learning for computer vision</p>
-<h2 id="questions">Questions</h2>
-<ol>
-<li><strong>Introduction</strong>
+<li>Representation and state estimation
 <ul>
-<li>Why is computational vision challenging? Some applications.</li>
+<li>high/<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> dimension for dynamics and control</li>
+<li>Goal independent rep for all?</li>
+<li>no standard/benchmarks to evaluate, what is good</li>
+<li>environment feedback</li>
 </ul>
 </li>
-<li><strong>Registration &amp; Segmentation</strong>
+<li>Simulations &amp; Sim2Real Gap:
 <ul>
-<li>How image segmentation (histogram-based) depends on image resolution?</li>
+<li>Exist Different sim. &quot;Looks real&quot; from vision people, e.g. toufu breaking</li>
+<li>No unified parameters/limitation desc, difficult to adjust to task,</li>
+<li>tradeoff for time/efficiency &amp; precision</li>
+<li>Differentiable</li>
+</ul>
+<!-- * doufu -->
+<!-- * Simulation and modeling
+* Transfer from simulation to reality -->
+</li>
+<li>Learning from data-driven methods (RL) VS (expert) demonstrations
+<ul>
+<li>sim / real</li>
+<li>Reset ( evaluate )</li>
 </ul>
 </li>
-</ol>
-</div>
+<li>Perception<!-- *  : state tracking, parameter identification, property detection (e.g. landmarks for garments) and classification, etc. -->
+</li>
+<li>Control, visual servoing and planning
+<ul>
+<li>underactuated system, use air/gravity</li>
+</ul>
+</li>
+<li>Task specific
+<ul>
+<li>DLO : Deformable linear objects</li>
+<li>Elasto-Plastic / visco-elastic <!--( deformation & applied force rate (in/)dependent) --></li>
+<li>robot surgery, garment folding, agricultural</li>
+<li>Multi-arm manipulation</li>
+<li>Specialised tools, e.g. grippers, and sensors</li>
+</ul>
+</li>
+<li>Make use of modern gpu resources</li>
+</ul>
+<h2 id="interesting-approaches">Interesting Approaches</h2>
+<h3 id="kimitoshi-yamazaki-cloth-manipulation-based-on-hierarchical-shape-prediction"><em>Kimitoshi Yamazaki</em>: Cloth manipulation based on hierarchical shape prediction</h3>
+<ul>
+<li>use midstates to track and correct states</li>
+<li>mesh rep ( determined )</li>
+<li>use gaussian estimation for occlusion</li>
+<li>point cloud -&gt; voxel -&gt; (VtM NET) probabilistic mesh -&gt; topology to refine</li>
+</ul>
+<h3 id="youcef-mezouar-the-european-project-softmanbot--handling-deformable-and-flexible-materials-for-the-industry"><em>Youcef Mezouar</em>: The european project Softmanbot : handling deformable and flexible materials for the industry</h3>
+<h3 id="ken-goldberg-real2sim2real-a-model-for-deep-learning-to-manipulate-deformable-objects"><em>Ken Goldberg</em>: <u>Real2Sim2Real</u>: A Model for Deep Learning to Manipulate Deformable Objects</h3>
+<ul>
+<li>collect in real rollouts -&gt; train in sim -&gt; deploy in real</li>
+<li>train on less data to achieve better result</li>
+<li><img src="file:////Users/wendy/code/projects/ynrng.github.io/uob/_/paper/images/real2sim2real.png?raw=true" alt=""></li>
+</ul>
+<h3 id="andrea-cherubini-see-and-shape-vision-based-robot-manipulation-of-non-rigid-objects"><em>Andrea Cherubini</em>: See and shape: vision-based robot manipulation of non-rigid objects</h3>
+<ul>
+<li>define error function</li>
+<li>controller based on feature (state) it affacts <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo>=</mo><msub><mi>L</mi><mi>k</mi></msub><msub><mi>u</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_{k+1} -x_k=L_k u_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>learnnig mapping L by relating contours and actions (NN)</li>
+</ul>
+<h3 id="shuran-song-the-reasonable-effectiveness-of-dynamic-manipulation-for-deformable-objects"><em>Shuran Song</em>: The Reasonable Effectiveness of Dynamic Manipulation for Deformable Objects</h3>
+<ul>
+<li>iterative residual policy ( converge within 3 steps)</li>
+<li>learn in delta dynamics instead of full</li>
+</ul>
+<h3 id="rika-antonova-distributional-representations-and-scalable-simulations-for-real-to-sim-with-deformables"><em>Rika Antonova</em>: Distributional Representations and Scalable Simulations for Real-to-Sim with Deformables</h3>
+<h3 id="alan-kuntz--isabella-huang-large-scale-simulation-for-calibration-free-sim-to-real-transfer-of-deformable-object-manipulation"><em>Alan Kuntz &amp; Isabella Huang</em>: Large-Scale Simulation for Calibration-Free Sim to Real Transfer of Deformable Object Manipulation</h3>
+  <!-- tofu example -->
+<ul>
+<li>full state tensor ( pos &amp; vel, element stress tensor, contact point&amp; force)</li>
+<li>use force detect instead of $\Delta$distance to determine safe to pick/reached desired pos</li>
+<li>IsaacGym - sim - (quite difficult to model, definitions for vertex)</li>
+<li>DeformerNet - surgery</li>
+</ul>
+<h3 id="carolyn-matl-deformable-elasto-plastic-object-shaping-using-an-elastic-hand"><em>Carolyn Matl</em>: Deformable Elasto-Plastic Object Shaping using an Elastic Hand</h3>
+<ul>
+<li>Elasto-Plastic / visco-elastic <!--( deformation & applied force rate (in/)dependent) --></li>
+<li>specialised ee, membraine, estimate 1d stiffness (force/movement)</li>
+</ul>
+<h2 id="discussion">Discussion</h2>
+<p>in fact, people from engineering department have spent decades to study them and have books about continous mechanics. DO we need to learn all that and then think about how to solve problems? should we conduct more multisubject research and break the walls in different departments?</p>
+<p>human don't explicitly model precisely about the obj &amp; env, we operate on constraints and adjust online while carrying out tasks. should we try same approach with robot arms?</p>
+<p>there are some benefits. e.g. pick up teddy bear, because of the natural compliance of soft obj.</p>
+<!-- ## @ ICRA2023
+
+**i)** How to tractably represent the state of a deformable object?
+
+**ii)** How to model and simulate its highly complex and non-linear dynamics?
+
+**iii)** What hardware tools and platforms are best suited for grasping and manipulating? --></div>
         </div>
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */
