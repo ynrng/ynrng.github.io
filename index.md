@@ -23,7 +23,6 @@
 - [Basics](uob/neural_computation/nc_basics.md)
 - [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
 
-[paper](/uob/~/paper/deformable.md)
 <!-- ```
 .
 ├── _config.yml
