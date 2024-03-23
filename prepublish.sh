@@ -1,11 +1,15 @@
 #!/bin/bash
 
-foldername="docs"
+dest_dir="./docs"
+src_dir="./uob"
 
+mkdir -p $dest_dir
+
+### generate html files from md
 search="file:////Users/wendy/code/projects/sugaE.github.io/"
 replace="https://github.com/sugaE/sugaE.github.io/blob/master/"
 
-files=$(find $foldername -type f -name '*.html')
+files=$(find $dest_dir -type f -name '*.html')
 for file in ${files[*]}
 do
   echo $file
@@ -19,3 +23,15 @@ do
   fi
 
 done
+
+### pure copy src/tex files to destination folder
+included_exts="tex bib sty pdf"  # Add the extensions you want to exclude
+
+for ext in $included_exts; do
+    find "$src_dir" -type f -name "*.$ext" | while read -r file; do
+        ditto $file "$dest_dir/$(dirname "$file")/$(basename "$file")"
+    done
+done
+
+cp "CNAME" "$dest_dir/CNAME"
+rm -rf "$dest_dir/uob/~"

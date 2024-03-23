@@ -11,6 +11,9 @@
 - [ROS 2](envs/ros.md)
 
 
+## Maths
+### [Probability](uob/math/prob.pdf)
+
 ## UoB (AI & ML)
 ### [Intelligent Robotics](uob/intelligent_robotics/ir.md)
 ### [Advanced Robotics](uob/advanced_robotics/README.md)
@@ -22,6 +25,7 @@
 ### Neural Computation
 - [Basics](uob/neural_computation/nc_basics.md)
 - [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
+
 
 <!-- ```
 .

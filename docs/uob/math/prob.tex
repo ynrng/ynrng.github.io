@@ -1,0 +1,46 @@
+
+
+%thesis.tex
+%Model LaTeX file for Ph.D. thesis at the
+%School of Mathematics, University of Edinburgh
+
+\documentclass[11pt,singleside,openright]{report}
+
+
+\usepackage[phd]{../edmaths}
+
+\begin{document}
+
+% \tableofcontents
+
+\chapter{Probablity}
+\section{Exponential Families}
+An exponential family of probability distributions is defined as those distributions whose density have the following general form:
+
+$$
+p(x | \eta) = h(x) \exp\{\eta^T T (x) - A(\eta)\}
+$$
+
+Here are the explanations of the parameters in the exponential family formula:
+
+\begin{itemize}
+    \item $p(x | \eta)$: This is the probability density function of the data $x$ given the parameter $\eta$. It is a function of the data $x$ and the parameter $\eta$.
+
+    \item $h(x)$: This is called the \textbf{base measure}. It depends only on the data $x$ and is often chosen to ensure that the probability density function integrates to 1.
+
+    \item $T(x)$: This is a vector-valued function of the data $x$. The vector $T(x)$ is called the \textbf{sufficient statistic} because it contains all the information in the data $x$ that is needed to estimate the parameter $\eta$.
+
+    \item $\eta$: This is a vector of parameters, often referred to as the \textbf{canonical parameter} or \textbf{natural parameter}. The distribution of the data $x$ can be fully specified by this parameter.
+
+    \item $A(\eta)$: This is a real-valued function of the parameter $\eta$, known as the \textbf{log-partition function} or \textbf{cumulant function}. It ensures that the probability density function integrates to 1.
+\end{itemize}
+
+This is a very general form and includes many well-known distributions such as Gaussian, binomial, multinomial, Poisson, gamma, von Mises, and beta distributions
+
+
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+
+\end{document}
