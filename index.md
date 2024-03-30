@@ -26,6 +26,10 @@
 - [Basics](uob/neural_computation/nc_basics.md)
 - [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
 
+## Ski
+- [Les 3 Vallées - France](ski/3vallees.md)
+- [Chamonix - France](ski/chamonix.md)
+
 
 <!-- ```
 .
