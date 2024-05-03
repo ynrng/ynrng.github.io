@@ -31,7 +31,7 @@
 - [Chamonix - France](ski/chamonix.md)
 
 ## Languages
-- [French](lang/french.md)
+- [French](lang/french/vocabulary.md)
 
 
 <!-- ```
