@@ -1,7 +1,7 @@
 
 
 
-# NOTES [![GitHub issues](https://badgen.net/github/issues/sugaE/sugaE.github.io/)](https://GitHub.com/sugaE/sugaE.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/sugaE/sugaE.github.io)](https://GitHub.com/sugaE/sugaE.github.io/pull/)
+# NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/)
 
 >  Contact me [here](mailto:suga_e@outlook.com)
 
@@ -29,6 +29,9 @@
 ## Ski
 - [Les 3 Vallées - France](ski/3vallees.md)
 - [Chamonix - France](ski/chamonix.md)
+
+## Languages
+- [French](lang/french.md)
 
 
 <!-- ```
