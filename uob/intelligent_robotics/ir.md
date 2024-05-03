@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 # IR
 
 ## Bayes Filter BF

@@ -1,4 +1,6 @@
-
+---
+layout: page
+---
 <link type="text/css" rel="stylesheet" href="../md.css">
 
 # [Home](../../index.md) > [Advanced Robotics](README.md) > Dynamics

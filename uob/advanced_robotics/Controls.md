@@ -1,4 +1,7 @@
-<link type="text/css" rel="stylesheet" href="../md.css">
+---
+layout: page
+---
+<!-- <link type="text/css" rel="stylesheet" href="../md.css"> -->
 
 # [Home](../../index.md) > [Advanced Robotics](README.md) > Controls
 > generate $\tau$ to get $\ddot{q}$

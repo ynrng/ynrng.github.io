@@ -1,5 +1,7 @@
-
-<link type="text/css" rel="stylesheet" href="../md.css">
+---
+layout: post
+---
+<!-- <link type="text/css" rel="stylesheet" href="../md.css"> -->
 
 # [Home](../../index.md) > [Advanced Robotics](README.md) > FK/IK
 
@@ -350,4 +352,3 @@ $$
 where  $J^+ = J^T (JJ^T )^{-1}$ is Moore-Penrose pseudoinverse.
 
 $\dot q_0$ can be used to achieve secondary objectives.
-
