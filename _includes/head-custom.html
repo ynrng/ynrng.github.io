@@ -1,15 +1,12 @@
 <!-- Configure MathJax  -->
 <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      macros: {
-
-      }
-    }
-  };
+  MathJax.Hub.Config({
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  });
 </script>
 
 <!-- Load MathJax for rendering LaTeX -->
-<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+<script type="text/javascript" src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </script>
