@@ -56,10 +56,10 @@ $
 #### ***Algorithm KF***
 
 **Kalman_filter**($\mu_{t-1}$, $\Sigma_{t-1}$, $u_t$, $z_t$): \
-\# prediction step \
+\\# prediction step \
 $\overline{\mu}_t=A_t\mu_{t-1}+B_tu_t$ \
 $\overline{\Sigma}_t=A_t\Sigma_{t-1}A_t^T+R_t$ \
-\# correction step \
+\\# correction step \
 $K_t = \overline{\Sigma}_tC_t^T(C_t\overline{\Sigma}_tC_t^T+Q_t)^{-1}$ \# Kalman gain \
 $\mu_t=\overline{\mu}_t+K_t(z_t-C_t\overline{\mu}_t)$ \
 $\Sigma_t=(I-K_tC_t)\overline{\Sigma}_t$ \
