@@ -1,13 +1,16 @@
 <div>
 <!-- Configure MathJax  -->
 <script>
-  MathJax.Hub.Config({
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
-  });
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 
-<!-- Load MathJax for rendering LaTeX -->
-<script type="text/javascript" src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </div>
