@@ -1,5 +1,7 @@
-
-# Migrate HOMEBREW from intel to m1 chip:
+---
+layout: page
+title: Migrate HOMEBREW from intel to m1 chip
+---
 
 
 

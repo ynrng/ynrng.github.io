@@ -1,13 +1,14 @@
-
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-
-# [Home](../../index.md) > [Robot Vision](README.md)
+---
+layout: page
+title: Robot Vision
+---
 
 - [CV](CV.md)
 - [3D](3D.md)
 - [RV](RV.md)
 - [DL](DL.md)
+- [DL](DL.md)
+-
 
 W1
 •Introduction to computer vision & module admin. •Image formation
@@ -30,7 +31,7 @@ W7
 W8
 •Multiple-view Geometry
 W9
-•Indexing instances •Image categorisation •Face recognition •Object recognition 
+•Indexing instances •Image categorisation •Face recognition •Object recognition
 W10
 •Deep learning for computer vision
 ## Questions

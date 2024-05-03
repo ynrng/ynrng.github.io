@@ -1,7 +1,7 @@
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-
-# [Home](../index.md) > [Les 3 Vallées - France](3vallees.md)
+---
+layout: page
+title: Les 3 Vallées - France
+---
 
 
 ## Val Thorens

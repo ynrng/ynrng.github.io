@@ -1,9 +1,9 @@
-<link type="text/css" rel="stylesheet" href="../md.css">
+---
+layout: page
+title: French - Vocabulary
+---
 
-# [Home](../index.md) > French [vocabulary](vocabulary.md)
-- French [grammer](grammer.md)
-
-## Vocabulary
+## A1
 
 ### noun
 - [ ] le manteau - manteaux & coat

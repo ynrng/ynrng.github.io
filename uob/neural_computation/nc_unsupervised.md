@@ -1,7 +1,8 @@
-
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-# Unsupervised Learning
+---
+layout: page
+title: Unsupervised Learning
+---
+<!-- # Unsupervised Learning -->
 
 
 Labelled data is limited (time consuming, requires expertise, label in every possible situation).

@@ -1,6 +1,7 @@
-# ROS2 for M1 Mac
-
-Yán @ 2022
+---
+layout: page
+title: ROS2 for M1 Mac
+---
 
 >references:
 

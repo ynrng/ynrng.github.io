@@ -1,7 +1,8 @@
-
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-# [Home](../../index.md) > [Robot Vision](README.md) > DL
+---
+layout: page
+title: Deep Learning
+---
+<!-- # [Home](../../index.md) > [Robot Vision](README.md) > DL -->
 
 
 ## Deep Learning for Computer Vision

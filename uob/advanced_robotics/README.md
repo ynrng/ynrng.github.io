@@ -1,10 +1,7 @@
-
 ---
-layout: post
+layout: page
+title: Advanced Robotics
 ---
-<!-- <link type="text/css" rel="stylesheet" href="../md.css"> -->
-
-# [Home](../../index.md) > [Advanced Robotics](README.md)
 
 - [Math/Physics](Math.Physics.md)
 - [FK/IK](FK.IK.md)

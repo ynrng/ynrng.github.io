@@ -1,6 +1,9 @@
-# ROS2 for M1 Mac with Parallels
+---
+layout: page
+title: ROS2 for M1 Mac with Parallels
+---
 
-Yán @ 2022
+
 
 <!-- >references: -->
 

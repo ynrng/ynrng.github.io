@@ -1,5 +1,7 @@
-
-<link type="text/css" rel="stylesheet" href="../md.css">
+---
+layout: page
+title: Computer Vision
+---
 
 # [Home](../../index.md) > [Robot Vision](README.md) > CV
 > THANKS @mantasu for [Notes](https://github.com/mantasu/uob-cv/blob/master/notes.md)

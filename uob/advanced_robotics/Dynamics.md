@@ -1,10 +1,7 @@
 ---
 layout: page
+title: Dynamics
 ---
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-# [Home](../../index.md) > [Advanced Robotics](README.md) > Dynamics
-
 
 ### Inertia and moments
 In static equilibrium, relationship between end-effector force $F$ and Joint torque $\tau$:

@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: page
+title: IR
 ---
 
-# IR
+<!-- # IR -->
 
 ## Bayes Filter BF
 

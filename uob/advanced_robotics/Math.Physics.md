@@ -1,10 +1,7 @@
 ---
-layout: post
+layout: page
+title: Math/Physics
 ---
-
-<!-- <link type="text/css" rel="stylesheet" href="../md.css"> -->
-
-# [Home](../../index.md) > [Advanced Robotics](README.md) > Math/Physics
 
 ## Cross product
 > [calculator](https://www.wolframalpha.com/input?i=cross+product&assumption=%7B%22C%22%2C+%22cross+product%22%7D+-%3E+%7B%22Calculator%22%7D)

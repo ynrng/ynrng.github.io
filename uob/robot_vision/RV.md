@@ -1,7 +1,9 @@
+---
+layout: page
+title: Robot Vision
+---
 
-<link type="text/css" rel="stylesheet" href="../md.css">
-
-# [Home](../../index.md) > [Robot Vision](README.md) > RV
+<!-- # [Home](../../index.md) > [Robot Vision](README.md) > RV -->
 
 ## Pinhole Camera - W7.1
 

@@ -1,5 +1,8 @@
 
-# Mac
+---
+layout: page
+title: Mac tricks
+---
 
 Show all (hidden) files by default:
 ```sh

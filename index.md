@@ -10,15 +10,17 @@ layout: home
 
 
 
-# NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/)
+<!-- # NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/) -->
 
 <!-- >  Contact me [here](mailto:suga_e@outlook.com) -->
 
 
-## Environments (for M1)
-- [Homebrew](envs/homebrew.md)
-- [ROS 2](envs/ros.md)
+## Ski
+- [Les 3 Vallées - France](ski/3vallees.md)
+- [Chamonix - France](ski/chamonix.md)
 
+## Languages
+- [French](lang/french/vocabulary.md)
 
 ## Maths
 ### [Probability](uob/math/prob.pdf)
@@ -35,12 +37,9 @@ layout: home
 - [Basics](uob/neural_computation/nc_basics.md)
 - [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
 
-## Ski
-- [Les 3 Vallées - France](ski/3vallees.md)
-- [Chamonix - France](ski/chamonix.md)
-
-## Languages
-- [French](lang/french/vocabulary.md)
+## Environments (for M1)
+- [Homebrew](envs/homebrew.md)
+- [ROS 2](envs/ros.md)
 
 
 <!-- ```
