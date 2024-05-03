@@ -2,6 +2,12 @@
 layout: page
 title: Basics
 ---
+
+
+- [Basics](nc_basics.md)
+- [Unsupervised Learning](nc_unsupervised.md)
+
+
 ## [Activation functions](https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6)
 ![](images/activations.png)
 ![](https://miro.medium.com/max/1400/1*n1HFBpwv21FCAzGjmWt1sg.png)

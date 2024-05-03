@@ -15,27 +15,21 @@ layout: home
 <!-- >  Contact me [here](mailto:suga_e@outlook.com) -->
 
 
+## Languages
+- [French](lang/french/vocabulary.md)
+
 ## Ski
 - [Les 3 Vallées - France](ski/3vallees.md)
 - [Chamonix - France](ski/chamonix.md)
-
-## Languages
-- [French](lang/french/vocabulary.md)
 
 ## Maths
 ### [Probability](uob/math/prob.pdf)
 
 ## UoB (AI & ML)
-### [Intelligent Robotics](uob/intelligent_robotics/ir.md)
-### [Advanced Robotics](uob/advanced_robotics/README.md)
-- [FK/IK](uob/advanced_robotics/FK.IK.md)
-- [Dynamics](uob/advanced_robotics/Dynamics.md)
-- [Controls](uob/advanced_robotics/Controls.md)
-- Motion Planning
-### [Robot Vision](uob/robot_vision/README.md)
-### Neural Computation
-- [Basics](uob/neural_computation/nc_basics.md)
-- [Unsupervised Learning](uob/neural_computation/nc_unsupervised.md)
+- [Intelligent Robotics](uob/intelligent_robotics/ir.md)
+- [Advanced Robotics](uob/advanced_robotics/README.md)
+- [Robot Vision](uob/robot_vision/README.md)
+- [Neural Computation](uob/neural_computation/nc_basics.md)
 
 ## Environments (for M1)
 - [Homebrew](envs/homebrew.md)

@@ -4,6 +4,8 @@ title: Unsupervised Learning
 ---
 <!-- # Unsupervised Learning -->
 
+- [Basics](nc_basics.md)
+- [Unsupervised Learning](nc_unsupervised.md)
 
 Labelled data is limited (time consuming, requires expertise, label in every possible situation).
 
