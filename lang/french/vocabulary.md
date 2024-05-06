@@ -3,13 +3,17 @@ layout: page
 title: French - Vocabulary
 ---
 
-## A1
+### noun.
 
-### noun
-- [ ] le manteau - manteaux & coat
-- [ ] la botte - bottes
+| word       | pl.      | explain |
+| :--------- | :------- | :------ |
+| le manteau | manteaux | coat    |
+| la botte   | bottes   | boots   |
 
-### verbs
+### adj.
 
 
-### things too good to be true
+### verb.
+
+
+<!-- ### things too good to be true -->

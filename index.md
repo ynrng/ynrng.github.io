@@ -20,7 +20,7 @@ layout: home
 
 ## Ski
 - [Les 3 Vallées - France](ski/3vallees.md)
-- [Chamonix - France](ski/chamonix.md)
+<!-- - [Chamonix - France](ski/chamonix.md) -->
 
 ## Maths
 ### [Probability](uob/math/prob.pdf)
