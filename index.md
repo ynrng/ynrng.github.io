@@ -35,7 +35,6 @@ layout: home
 - [Homebrew](envs/homebrew.md)
 - [ROS 2](envs/ros.md)
 
--[test](_posts/2024-06-04-memos.md)
 <!-- ```
 .
 ├── _config.yml
