@@ -22,6 +22,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
 
 # Theme-specific settings
 
@@ -31,6 +32,9 @@ header_pages:
   - posts.md
   - douvk.md
 
+
+paginate: 10                # number of posts per page
+paginate_path: "/page:num"  # URL structure for pages 2, 3, etc.
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
