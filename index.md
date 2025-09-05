@@ -18,6 +18,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - My [contact details](/contact).
 - A [list of ski places](https://docs.google.com/spreadsheets/d/1AgZrde_ub_FZpQ3LFjtldf4TlgmQXQ7b1tR3aITAOmM/edit?usp=sharing) I've been to / I'd like to go to.
 - A list of [travel journals](/travels).
+- A list of my [art works](/arts)
 
 
 <!-- # NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/) -->

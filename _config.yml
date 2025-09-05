@@ -81,3 +81,6 @@ minima:
 collections:
   travels:
     output: true
+
+  arts:
+    output: true
