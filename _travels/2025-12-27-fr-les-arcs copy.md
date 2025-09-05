@@ -6,4 +6,4 @@ categories:
 date: 2025-12-27
 ---
 
-We stayed with UCPA.
+We stay with UCPA.
