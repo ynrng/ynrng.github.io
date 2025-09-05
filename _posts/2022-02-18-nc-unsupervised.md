@@ -10,8 +10,8 @@ date: 2022-02-18
 
 <!-- # Unsupervised Learning -->
 
-- [Basics](2022-02-18-nc_basics.md)
-- [Unsupervised Learning](2022-02-18-nc_unsupervised.md)
+- [Basics](nc-basics.md)
+- [Unsupervised Learning](nc-unsupervised.md)
 
 Labelled data is limited (time consuming, requires expertise, label in every possible situation).
 

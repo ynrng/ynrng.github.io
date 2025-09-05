@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: post
 title: French - Vocabulary
+categories:
+- langue
+date: 2024-05-03
 ---
 
 ### noun.

@@ -18,22 +18,22 @@ layout: page
 ## Languages
 - [French](lang/french/vocabulary.md)
 
-## Ski
-- [Les 3 Vallées - France](ski/3vallees.md)
+<!-- ## Ski -->
+<!-- - [Les 3 Vallées - France](ski/3vallees.md) -->
 <!-- - [Chamonix - France](ski/chamonix.md) -->
 
 ## Maths
 ### [Probability](uob/math/prob.pdf)
 
-## UoB (AI & ML)
-- [Intelligent Robotics](uob/intelligent_robotics/ir.md)
-- [Advanced Robotics](uob/advanced_robotics/README.md)
-- [Robot Vision](uob/robot_vision/README.md)
-- [Neural Computation](uob/neural_computation/nc_basics.md)
+<!-- ## UoB (AI & ML) -->
+<!-- - [Intelligent Robotics](uob/intelligent_robotics/ir.md)
+- [Advanced Robotics](uob/advanced_robotics/README.md) -->
+<!-- - [Robot Vision](uob/robot_vision/README.md) -->
+<!-- - [Neural Computation](uob/neural_computation/nc_basics.md) -->
 
-## Environments (for M1)
+<!-- ## Environments (for M1)
 - [Homebrew](envs/homebrew.md)
-- [ROS 2](envs/ros.md)
+- [ROS 2](envs/ros.md) -->
 
 <!-- ```
 .
