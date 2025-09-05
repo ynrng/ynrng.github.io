@@ -1,7 +1,13 @@
 ---
-layout: page
-title: IR
+layout: post
+title: "Intelligent Robotics Notes"
+categories:
+- notes
+- uob
+- ir
+date: 2022-05-22
 ---
+
 
 <!-- # IR -->
 

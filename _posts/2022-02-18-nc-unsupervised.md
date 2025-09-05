@@ -1,11 +1,17 @@
 ---
-layout: page
-title: Unsupervised Learning
+layout: post
+title: "Neural Computation - Unsupervised Learning"
+categories:
+- notes
+- uob
+- nc
+date: 2022-02-18
 ---
+
 <!-- # Unsupervised Learning -->
 
-- [Basics](nc_basics.md)
-- [Unsupervised Learning](nc_unsupervised.md)
+- [Basics](2022-02-18-nc_basics.md)
+- [Unsupervised Learning](2022-02-18-nc_unsupervised.md)
 
 Labelled data is limited (time consuming, requires expertise, label in every possible situation).
 

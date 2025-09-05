@@ -1,12 +1,17 @@
 ---
-layout: page
-title: Advanced Robotics
+layout: post
+title: "Advanced Robotics - Cheatsheet"
+categories:
+- notes
+- uob
+- ar
+date: 2022-05-22
 ---
 
-- [Math/Physics](Math.Physics.md)
-- [FK/IK](FK.IK.md)
-- [Dynamics](Dynamics.md)
-- [Controls](Controls.md)
+- [Math/Physics](2022-05-22-math-physics.md)
+- [FK/IK](2022-05-22-fk-ik.md)
+- [Dynamics](2022-05-22-dynamics.md)
+- [Controls](2022-05-22-controls.md)
 - Motion Planning
 <!-- - [Motion Planning](MP.md) -->
 

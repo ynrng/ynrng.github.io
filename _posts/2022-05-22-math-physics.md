@@ -1,6 +1,11 @@
 ---
-layout: page
-title: Math/Physics
+layout: post
+title: "Advanced Robotics - Math/Physics"
+categories:
+- notes
+- uob
+- ar
+date: 2022-05-22
 ---
 
 ## Cross product
