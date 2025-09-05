@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Advanced Robotics - Math/Physics"
+title: Advanced Robotics - Math/Physics
 categories:
 - notes
 - uob

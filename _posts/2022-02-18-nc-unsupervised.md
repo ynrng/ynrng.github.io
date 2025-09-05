@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Neural Computation - Unsupervised Learning"
+title: Neural Computation - Unsupervised Learning
 categories:
 - notes
 - uob

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gifs"
+title: Gifs
 categories:
 - art
 date: 2025-09-04

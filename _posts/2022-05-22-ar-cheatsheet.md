@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Advanced Robotics - Cheatsheet"
+title: Advanced Robotics - Cheatsheet
 categories:
 - notes
 - uob

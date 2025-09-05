@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Advanced Robotics - Dynamics"
+title: Advanced Robotics - Dynamics
 categories:
 - notes
 - uob

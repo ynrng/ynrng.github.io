@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Advanced Robotics - Controls"
+title: Advanced Robotics - Controls
 categories:
 - notes
 - uob

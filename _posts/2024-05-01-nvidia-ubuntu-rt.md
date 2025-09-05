@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Setup nvidia env with a self compiled ubuntu realtime kernel"
+title: Setup nvidia env with a self compiled ubuntu realtime kernel
 categories:
 - nvidia
 date: 2024-05-01
