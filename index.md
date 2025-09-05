@@ -23,7 +23,7 @@ layout: page
 <!-- - [Chamonix - France](ski/chamonix.md) -->
 
 ## Pdfs
-- [Probability](uob/math/prob.pdf)
+- [Probability](tex/math/prob.pdf)
 
 <!-- ## UoB (AI & ML) -->
 <!-- - [Intelligent Robotics](uob/intelligent_robotics/ir.md)
