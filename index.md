@@ -9,6 +9,14 @@ layout: page
 ---
 
 
+Hi, my name is Yanrong Wang.
+I am currently (2025) a PhD student in University of Edinburgh. My research focuses on robot 🤖 teleoperation.
+I graduated from University of Birmingham for my MSc in Artificial Intelligent and Machine Learning.
+
+- A list of [notes](/posts) for myself.
+- A [garden](/douvk) of my friends.
+- My [contact details](/contact).
+
 
 <!-- # NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/) -->
 
@@ -22,8 +30,8 @@ layout: page
 <!-- - [Les 3 Vallées - France](ski/3vallees.md) -->
 <!-- - [Chamonix - France](ski/chamonix.md) -->
 
-## Pdfs
-- [Probability](tex/math/prob.pdf)
+<!-- ## Pdfs
+- [Probability](tex/math/prob.pdf) -->
 
 <!-- ## UoB (AI & ML) -->
 <!-- - [Intelligent Robotics](uob/intelligent_robotics/ir.md)
