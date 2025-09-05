@@ -15,15 +15,15 @@ layout: page
 <!-- >  Contact me [here](mailto:suga_e@outlook.com) -->
 
 
-## Languages
-- [French](lang/french/vocabulary.md)
+<!-- ## Languages
+- [French](lang/french/vocabulary.md) -->
 
 <!-- ## Ski -->
 <!-- - [Les 3 Vallées - France](ski/3vallees.md) -->
 <!-- - [Chamonix - France](ski/chamonix.md) -->
 
-## Maths
-### [Probability](uob/math/prob.pdf)
+## Pdfs
+- [Probability](uob/math/prob.pdf)
 
 <!-- ## UoB (AI & ML) -->
 <!-- - [Intelligent Robotics](uob/intelligent_robotics/ir.md)
