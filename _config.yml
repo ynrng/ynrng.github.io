@@ -84,3 +84,6 @@ collections:
 
   arts:
     output: true
+
+  movies:
+    output: true
