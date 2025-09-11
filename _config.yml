@@ -58,6 +58,17 @@ minima:
   date_format: "%d %b, %Y"
 
   show_drafts: false
+
+collections:
+  travels:
+    output: true
+
+  arts:
+    output: true
+
+  movies:
+    output: true
+
   # Generate social links in footer.
   #social_links:
   #  - { platform: devto,          user_url: "https://dev.to/jekyll" }
@@ -76,14 +87,3 @@ minima:
   #  - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
   #  - { platform: x,              user_url: "https://x.com/jekyllrb" }
   #  - { platform: youtube,        user_url: "https://www.youtube.com/jekyll" }
-
-
-collections:
-  travels:
-    output: true
-
-  arts:
-    output: true
-
-  movies:
-    output: true
