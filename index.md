@@ -16,9 +16,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - A list of [notes](/posts) for myself.
 - A [garden](/douvk) of my friends.
 - My [contact details](/contact).
-- A list of [travel journals](/travels).
-- A list of my [art works](/arts).
-- [Movie views](/movies).
+
 
 
 <!-- # NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/) -->

@@ -13,8 +13,8 @@ web pages urls.
 ├── /404            #
 ├── /douvk          #
 ├── /posts...       #
-├── /arts...        #
-├── /movies...      #
-├── /travels...     #
+# ├── /arts...        #
+# ├── /movies...      #
+# ├── /travels...     #
 ├── /tex...         # pdfs compilations
 ```
