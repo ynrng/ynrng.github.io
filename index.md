@@ -16,6 +16,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - A list of [notes](/posts) for myself.
 - A [garden](/douvk) of my friends.
 - My [contact details](/contact).
+- [English](/en/vocabulary).
 
 
 
