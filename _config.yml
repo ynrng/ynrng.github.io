@@ -41,7 +41,6 @@ paginate_path: "/page:num"  # URL structure for pages 2, 3, etc.
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
 
-tags: true
 show_drafts: false
 
 # Minima specific settings, which are only available from Minima 3.0 onward.

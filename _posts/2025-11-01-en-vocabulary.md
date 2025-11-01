@@ -4,7 +4,7 @@ title: English - Vocabulary
 categories:
 - langue
 date: 2025-11-01
-permalink: /en/vocabulary
+permalink: /en/voc
 ---
 
 | Date |  Word | Explaination | Example | Origin | Synonyms | Other word forms |
