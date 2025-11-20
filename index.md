@@ -19,7 +19,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - [English](/en/voc).
 - [⛷️ SKI TRIP!](/next-ski).
 - [Driving](/_posts/2025-11-07-dvla-practical.md)
-- [How I contributed to global warming](/flights)
+- How much I contributed to [global warming](/flights) and [greener planet](/trains)
 
 
 
