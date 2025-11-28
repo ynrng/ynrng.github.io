@@ -27,3 +27,7 @@ I will draw the picture someday)
 [jekyll](https://github.com/jekyll/jekyll) -->
  <!-- / -->
 <!-- [minima](https://github.com/jekyll/minima) -->
+---
+
+And some other friends:
+- [Ben](https://vyrz.dev/)
