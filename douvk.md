@@ -16,6 +16,8 @@ I will draw the picture someday)
 - [T.W](https://www.cs.bham.ac.uk/~txw467/)
 - [J.F](https://jonfreer.co.uk/)
 
+![](/assets/images/douvk.png)
+
 
 <!-- You can find the source code for Jekyll at GitHub:
 [jekyll][jekyll-organization] /
