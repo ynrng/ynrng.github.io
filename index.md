@@ -18,7 +18,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 <!-- - My [contact details](/contact). -->
 - [English](/en/voc).
 - [⛷️ SKI TRIP!](/next-ski).
-- How much I contributed to [global warming](/flights) and [greener planet](/trains)
+- How much I contributed to [global warming](/flights) and [greener planet](/trains).
 
 
 
