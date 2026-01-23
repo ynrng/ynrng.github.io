@@ -12,6 +12,18 @@ date: 2025-12-27
 <iframe src='https://chat.yanrong.wang/countdown' width="100%" height="800" frameborder="0"></iframe>
 </div> -->
 
+## Date
+<!-- 21(Sat)-28(Sat)/Mar/2026 -->
+
+<span id="countdown-txt-les-arcs"></span>
+
+<script src="/assets/js/countdown.js"></script>
+<script >
+  updateCountdown("countdown-txt-les-arcs", "2025-12-27", "2026-01-03", "Les Arcs, France");
+</script>
+
+
+## Others
 We stayed with [UCPA Les Arcs](https://www.ucpa.co.uk/resorts-in-france/snow/les-arcs/).
 The centre is ski-in. The ski-in is through the blue Mont-Blanc and keep on the right in the big junction crossing with red lane, with a snow canon in the middle, which is slightly (50m or so) before you pass by clubmed.
 The ski-out route requires carrying the skis and climb a small snow hill in front of ucpa or walk down in concret, both for about 5 min.
