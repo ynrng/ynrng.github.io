@@ -33,3 +33,4 @@ I will draw the picture someday)
 
 And some other friends:
 - [Ben](https://vyrz.dev/)
+- [Cipi](https://helest.eu/)
