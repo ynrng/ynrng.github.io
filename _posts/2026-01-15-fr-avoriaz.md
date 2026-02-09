@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ski in Portes du Soleil
+title: Ski in Avoriaz, Portes du Soleil
 categories:
 - travel
 date: 2026-01-15

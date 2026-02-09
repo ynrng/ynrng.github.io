@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ski in Les Arcs - France
+title: Ski in Les Arcs, Paradiski
 categories:
 - travel
 date: 2025-12-27
