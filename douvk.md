@@ -12,7 +12,7 @@ Imagine here is a picture of a Greenheart, which is the grassland in front of Un
 I will draw the picture someday)
 - [G.K](https://georgejkaye.com/)
 - [B.P](https://brunorochapaiva.github.io/)
-- [M. Bestie](https://quiet.cafe/) tbh I don't know which m is this.
+- [M. Bestie](https://quiet.cafe/)
 - [T.W](https://www.cs.bham.ac.uk/~txw467/)
 - [J.F](https://jonfreer.co.uk/)
 
