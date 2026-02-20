@@ -23,6 +23,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-email-protect
+  - jekyll-remote-include
 
 # Theme-specific settings
 
