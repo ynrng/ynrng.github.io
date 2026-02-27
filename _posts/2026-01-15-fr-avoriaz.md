@@ -63,7 +63,7 @@ permalink: /next-ski
   - Ski rental 6 Days Pack Eco Adult (discount)/ €159 <span class="at">@ling</span> <span class="at">@shuyi</span>
   - Ski or snowboard rental 6 days Pack Sensation Adult (intermediate level)/ €235 @ling @shuyi
   <!-- - ~~Ski rental 6 Days Pack Premium Adults (prestige equipment)/ €315~~ -->
-  - 🚩 Skis rental 6 Days Eco Adults *without* shoes (discount) / €109 <span class="at">@yan</span>
+  - ✅ Skis rental 7 Days Black Adults *without* shoes at [intersport](https://www.intersport-rent.fr/en/stations-ski/haute-savoie/avoriaz?startDate=2026-03-28&endDate=2026-04-04)
   <!-- - ~~Ski or snowboard rental 6 Days Sensation Adults *without* ski shoes (good level)/ €185~~ -->
   <!-- - ~~Ski or snowboard rental 6 days Exellence Adult *without* shoes (experienced level)/ €219~~ -->
   <!-- - ~~Ski rental 6 Days Premium Adults *without* shoes (Premium skis)/ €265~~ -->
