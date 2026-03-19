@@ -22,8 +22,8 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 
 ---
 
-This is my current favorite song. Enjoy!
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6aLLPBxLZUK4E8DIKdcbN8?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+Songs pills.
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1sgVyMnaVzgvu21VGoI6As?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 <!-- # NOTES [![GitHub issues](https://badgen.net/github/issues/ynrng/ynrng.github.io/)](https://GitHub.com/ynrng/ynrng.github.io/issues/) [![GitHub total-pull-requests](https://badgen.net/github/prs/ynrng/ynrng.github.io)](https://GitHub.com/ynrng/ynrng.github.io/pull/) -->
 
