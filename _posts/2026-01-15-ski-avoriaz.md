@@ -11,6 +11,7 @@ permalink: /next-ski
 
 <!-- # Countdown -->
 <!-- [BIG countdown](https://chat.yanrong.wang/countdown) -->
+> Other ski trips: [Les Arcs](/_posts/2025-12-27-ski-les-arcs.md)
 
 ## Date
 <!-- 21(Sat)-28(Sat)/Mar/2026 -->
@@ -24,11 +25,41 @@ permalink: /next-ski
 </script>
 </div>
 
-## Ski map
+## Post-trip
+### Tracking Map
+Routes I actually did during the trip.
+<iframe src="https://www.google.com/maps/d/embed?mid=1WPH-he7qOFtQzDIdgVmEKPRJq_gX35w&ehbc=2E312F" width="640" height="480"></iframe>
+
+### Comments
+- Snow condition
+  - In earlier week, it was sunny and warm so snow condition is slushy everywhere around and below 1800.
+  - Later week, the everyday snow made it powdery and fabulous. Despite some of slopes and lifts closed during the heaviest snow day, and the strong wind made visibility down to 10 metres.
+- Parks and Fun
+  - In Avoriaz, *Nami Park* was only opened for a brief time for weather reason (I guess) and I missed it. *Stash*, *Chapelle* are quite enough for me. *Little Stash* is for kids and maybe it would be nice to take off skis and go up the tree houses.
+  - In Morzine, *Eagle Park* and *Penguin Park* are both quite childish.
+  - In Chatel, the border cross did not really work due to heavy wind -- Not enough speed.
+- Pistes
+  - In Swiss: Did not get to do *Mur Swiss* as it seemed too difficult. The long blue **Tovassière** takes you to cross almost the whole swiss part after swiss wall to Morgins, the beginning part of which, is a narrow cliff side road with amazing view.
+  - In Avoriaz: **Mormotte Snowcross** is definately fun to go, which was powdery even before the snow. The Blue **Proclu** next to little stash is a wide and flat run to try new tricks for learners, for me I went there for ski switch practice and I still don't understand how it works. All the blues along the high mountain ski lift, **TD6 Lac Intrets**, **TD6 Fornet**, **TD4 Choucas** should be quite nice when no wind. For swiss wall, **TSK Chavanette** has two very violent momentens in the beginning, but takes you closer to the entrance of the lift and piste, while if you go with **Choucas** there's a uphill to walk after.
+  - In Chatel: The black **Les Renards** is my favourite, which is powdery in the first half, and moguls in the end half. We did quite a lot of slightly off-piste powdery run in Chatel. But the whole Chatel after **TSD Gabelou** and **TSD Portes du Soleil** lifts are a bit too far from Avoriaz.
+  - In Morzine: Definitely recommend go to *Pointe de Nyon*. A little point of *Mont Blanc* is visible when facing towards the right of the viewpoint. The red **L'Aigle Rouge** is fun, flat, and nice to go down from top. And then at the end switch to the black **L'Aigle Noir** for a more challenging and fun mogul route.  The **Les Creux** is also worth a try.
+  - Did not get to *Let Gets* as it was a bit too far away and not enough time to come back as a group.
+- Restaurants
+  - Swiss: [Cookie Cafe Mossettes](https://maps.app.goo.gl/iJWiqHH7XyFokmKu9) has good burgers.
+  - Morzine: [Chez Nannon](https://maps.app.goo.gl/atB2qKSud3V5R8Qg8) is just down **L'Aigle Noir** and their special cheeze is amazing.
+  - Avoriaz:
+    - [Brasserie Avoriaz](https://maps.app.goo.gl/QKK7g9vD7fLquyF29) has good burgers.
+    - [Restaurant Les Fontaines Blanches](https://maps.app.goo.gl/KQsv85Hv7w9LipXg6) is slightly over priced due to HUGE portions of food. But the OYSTERs have quite reasonable price and are fresh!
+    - [L'Express](https://maps.app.goo.gl/sfTyKVCkURkeuyTC8) is situated next to **Tour** lift and is a french version of fast food restaurant. So do not order the raclette, it doesn't taste milky and cheezy.
+
+
+
+## Pre-trip: Planning Part
+### Ski map
 - [Piste map in pdf](https://www.portesdusoleil.com/app/uploads/lesportesdusoleil/2025/10/PDS_PLAN_HIVER_656x396_AVORIAZ_WEB.pdf). Check pdf down right corner for a planned round journey by ski between Les Gets and Abondance.
 - [Piste map interactive](https://winter.intermaps.com/portes_du_soleil)
 
-## Avoriaz
+### Avoriaz
 - From what I understand, the whole town is skiable([Blue lines in town plan](https://www.calameo.com/avoriaz/read/002827892871be4c28999)) and have ski lifts/drag inside town. So most of places are ski in ski out.
 - only transportation is horse carriage and ski lift. We possibly need to use this to go from car park to accommodation as they are hills and on snow and we have luggages.
   > Question: Confirm how we get to accomadation with luggages.
@@ -39,7 +70,7 @@ permalink: /next-ski
 ![ski_avoriaz_town_plan](/assets//images/ski_avoriaz_town_plan.png)
 
 
-## Accomadation option and fees
+### Accomadation option and fees
 <!-- - <span class="important">READ THIS</span> -->
   <!-- - <span class="at">@alex</span> <span class="at">@cipi</span>: 182(room5)+407(everything)=589€. -->
   <!-- - @me: 182(room5)+311(ski pass)+109(rental)=602€. <span class="at">@ling</span> <span class="at">@shuyi</span> plus 50-100ish extra depnd on rental and pass. -->
@@ -77,7 +108,7 @@ permalink: /next-ski
 - ~~Ménages / pp - Lits fait à l'arrivée/ €5.27 <- We don't need this~~
 - Food not included
 
-## Transportation
+### Transportation
 
 
 - [Car park](https://www.avoriaz.com/en/staying/access-and-transport/car-parks/): €80/week + €18/day for outdoor. 100/week + sth for indoor (need reservation).
@@ -121,22 +152,22 @@ permalink: /next-ski
     - then free bus to Les Prodains, 4min gondola
   - closest supermarkets in Cluses, or French outskirts of Geneva
 
-## What to bring from NL
+### What to bring from NL
 - some 1€ and 2€ coins for possible sledges usages.
 - Bedsheets. Single * 4 + Double * 1
 - Food
   - Noodles pls.
 
 
-## Activities to consider:
+### Activities to consider:
 - Dog sled @ La Chapelle-d'Abondance. [To book](https://www.a-ton-etoile.com/services).
 
 
 
-## Day Plans
+### Day Plans
 
 
-### Day0
+#### Day0
 > sat
 
 - Geneva. Flight land at 10am.
@@ -144,7 +175,7 @@ permalink: /next-ski
 - Intersports Rental pick up. Start from 1600. Close at **18:30**.
 
 
-### Day1
+#### Day1
 > Aroriaz
 <!-- >  - MONT DE GRANGE - Châtel(1200) - LE MORCLAN - La Chapelle d'Abondance(1020) -->
 
@@ -157,20 +188,19 @@ AM: Will take @alex down some greens
 
 PM: Stay in Avrias. Do some gental parks.
 
-### Day2
+#### Day2
 > Les Crosets
 
-Route to hit:
-- Mur Suisse
+~~Route to hit:- Mur Suisse~~
 
 
-### Day3
+#### Day3
 > Chatel
 
-### Day4
+#### Day4
 > Morzine - Les Gets
 
-### Day5
+#### Day5
 > Aroriaz
 
 AM:
@@ -179,10 +209,10 @@ Do some blacks?
 PM:
 Rental Switch to freestyle skis.
 
-### Day6
+#### Day6
 >
 
-### Day7
+#### Day7
 > sat
 
 - Snow park lift pass.
