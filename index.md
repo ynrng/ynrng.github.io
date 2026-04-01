@@ -17,7 +17,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - A [garden](/douvk) of my friends.
 <!-- - My [contact details](/contact). -->
 - [English](/en/voc).
-- [⛷️ SKI TRIP!](/next-ski).
+- [⛷️ SKI TRIP!](/ski/all).
 - How much I contributed to [global warming](/flights) and [greener planet](/trains).
 
 ---

@@ -4,14 +4,14 @@ title: Ski in Avoriaz, Portes du Soleil
 categories:
 - travel
 date: 2026-01-15
-permalink: /next-ski
+permalink: /ski/avoriaz
 ---
 
 <link rel="stylesheet" href="/assets/css/ski.css" />
 
 <!-- # Countdown -->
 <!-- [BIG countdown](https://chat.yanrong.wang/countdown) -->
-> Other ski trips: [Les Arcs](/_posts/2025-12-27-ski-les-arcs.md)
+> [Other ski trips](/ski/all)
 
 ## Date
 <!-- 21(Sat)-28(Sat)/Mar/2026 -->

@@ -4,9 +4,12 @@ title: Ski in Les Arcs, Paradiski
 categories:
 - travel
 date: 2025-12-27
+permalink: /ski/les-arcs
 ---
 
 
+
+> [Other ski trips](/ski/all)
 
 <!-- <div>
 <iframe src='https://chat.yanrong.wang/countdown' width="100%" height="800" frameborder="0"></iframe>
@@ -23,7 +26,13 @@ date: 2025-12-27
 </script>
 
 
-## Others
+## Post-trip
+### Tracking Map
+Routes I actually did during the trip.
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1BUU-fA007NTQRjNVowWfQrlu44lkbf4&ehbc=2E312F" width="640" height="480"></iframe>
+
+### Comments
+
 We stayed with [UCPA Les Arcs](https://www.ucpa.co.uk/resorts-in-france/snow/les-arcs/).
 The centre is ski-in. The ski-in is through the blue Mont-Blanc and keep on the right in the big junction crossing with red lane, with a snow canon in the middle, which is slightly (50m or so) before you pass by clubmed.
 The ski-out route requires carrying the skis and climb a small snow hill in front of ucpa or walk down in concret, both for about 5 min.
