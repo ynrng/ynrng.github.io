@@ -2,9 +2,9 @@
 
 // updateCountdown("2026-03-21", "2026-03-28", "Avoriaz, France");
 function updateCountdown(txtname, s, e, p) {
-    let startDate = new Date(s || "2026-03-21");
-    let endDate = new Date(e || "2026-03-28");
-    let place = p || 'Avoriaz, France';
+    let startDate = new Date(s || Date.now());
+    let endDate = e? new Date(e ) : '';
+    let place = p || '';
 
     const calculateRemainingDays = () => {
         const diff = startDate.getTime() - Date.now();
@@ -13,8 +13,23 @@ function updateCountdown(txtname, s, e, p) {
 
     let daysLeft = calculateRemainingDays();
 
+    let str = '';
 
-    document.getElementById(txtname).innerHTML =
-        daysLeft > 0 ? `${startDate.toDateString()} - ${endDate.toDateString()}. <br/><span style="font-size: xxx-large;color: red;">${daysLeft}</span> Days Until ${place}` :
-            `${place} was from ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}.`;
+
+    if (daysLeft > 0) {
+        str += startDate.toDateString()
+        if (endDate) {
+            str += ` - ${endDate.toDateString()}`;
+        }
+        str+= `. <br/><span style="font-size: xxx-large;color: red;">${daysLeft}</span> Days Until ${place}`;
+    } else {
+        str += `${place} was ${endDate?'from':'on'} `;
+        str += startDate.toLocaleDateString()
+        if (endDate) {
+            str += ` - ${endDate.toLocaleDateString()}`;
+        }
+        str += '.';
+    }
+
+    document.getElementById(txtname).innerHTML = str;
 }
