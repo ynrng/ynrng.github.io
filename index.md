@@ -16,7 +16,7 @@ I graduated from University of Birmingham for my MSc in Artificial Intelligent a
 - A list of [notes](/posts) for myself.
 - A [garden](/douvk) of my friends.
 <!-- - My [contact details](/contact). -->
-- [English](/en/voc).
+<!-- - [English](/en/voc). -->
 - I love [⛷️ SKI](/ski/all) and hate [🏃RUN](/10k/all).
 - How much I contributed to [global warming](/flights) and [greener planet](/trains).
 
