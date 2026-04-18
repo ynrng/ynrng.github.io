@@ -11,7 +11,7 @@ permalink: /ski/avoriaz
 
 <!-- # Countdown -->
 <!-- [BIG countdown](https://chat.yanrong.wang/countdown) -->
-> [Other ski trips](/ski/all)
+> [Other ski trips](/ski)
 
 ## Date
 <!-- 21(Sat)-28(Sat)/Mar/2026 -->

@@ -2,7 +2,7 @@
 layout: post
 # title: Some articles are just so long they deserve a really long title to see if things will break well
 categories:
-- tamp
+- robot
 date: 2024-06-04
 ---
 

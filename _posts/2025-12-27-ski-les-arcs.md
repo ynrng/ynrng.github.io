@@ -9,7 +9,7 @@ permalink: /ski/les-arcs
 
 
 
-> [Other ski trips](/ski/all)
+> [Other ski trips](/ski)
 
 <!-- <div>
 <iframe src='https://chat.yanrong.wang/countdown' width="100%" height="800" frameborder="0"></iframe>
