@@ -2,7 +2,7 @@
 layout: post
 title: Boardgames
 categories:
-- robot
+- notes
 date: 2026-04-17
 ---
 

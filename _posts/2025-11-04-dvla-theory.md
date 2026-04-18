@@ -2,7 +2,7 @@
 layout: post
 title: Drivers license test cheetsheet - theory
 categories:
-- travel
+- notes
 date: 2025-11-04
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: Youtube Lectures
 categories:
-- movie
+- notes
 date: 2025-10-31
 ---
 
