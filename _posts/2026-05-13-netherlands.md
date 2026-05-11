@@ -27,7 +27,7 @@ permalink: /nl
 
 | Place     | Time | Cost | Reserve | in | Do |
 |-----------|:----:|:----:|:-------:|:--:|:--:|
-|[Rijksmuseum](https://www.rijksmuseum.nl/en/tickets/options) |  Thur 11  |   Museumkaart   |   🚩   |   AM |
+|[Rijksmuseum](https://www.rijksmuseum.nl/en/tickets/options) |  Thur 11  |   Museumkaart   |    ✅    |   AM |
 |[Oude Kerk](https://www.oudekerk.nl/en/opening-hours-admission-prices/40784) | Thur: 10:00 - 18:00 | Museumkaart; Oudekerkstoren (tower) for € 7,50; | 🚫 | AM | Get Audio Guide; <br>Wednesday to Saturday at 13:00, 14:00, 15:00 and 16:00 |
 |
 |[Van Gogh](https://tickets.vangoghmuseum.nl/en/tickets) |  Sunday 9:00   |   Museumkaart   |  ✅  |  AM  | Audio Guide
