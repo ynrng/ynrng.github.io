@@ -3,8 +3,7 @@ layout: post
 title: Trip to Netherlands
 categories:
 - travel
-date: 2026-04-20
-permalink: /nl
+date: 2026-05-13
 ---
 
 
