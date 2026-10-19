@@ -1,0 +1,10 @@
+{
+  "fetched_at_utc": "2026-10-19T16:14:16.340Z",
+  "http_status": 200,
+  "data": {
+    "usage": 27.04523,
+    "limit": 500,
+    "currency": "GBP",
+    "asOf": null
+  }
+}
